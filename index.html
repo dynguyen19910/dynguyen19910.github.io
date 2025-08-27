@@ -64,14 +64,13 @@
       </nav>
     </header>
 
-    <!-- HERO -->
     <section class="hero" id="home">
       <div>
         <h1>Hello, I’m Nhat — a Data Analyst focused on SQL, Python & BI.</h1>
         <p>I turn data into actions: building KPI dashboards, cleaning messy datasets, and telling stories with numbers. This portfolio features selected <strong>projects</strong>, <strong>skills</strong>, and my <strong>CV</strong>.</p>
         <div class="stats">
           <div class="stat"><div class="kpi"><b>10+</b> dashboards</div><div class="muted">Tableau / Power BI</div></div>
-          <div class="stat"><div class="kpi"><b>6</b> end‑to‑end projects</div><div class="muted">EDA · SQL · Automation</div></div>
+          <div class="stat"><div class="kpi"><b>6</b> end-to-end projects</div><div class="muted">EDA · SQL · Automation</div></div>
           <div class="stat"><div class="kpi"><b>4</b> case studies</div><div class="muted">Business Insights</div></div>
         </div>
         <div class="project-actions" style="margin-top:16px">
@@ -84,24 +83,22 @@
         <table class="table">
           <tr><th>Core Skills</th><td>SQL, Python (pandas), Tableau, Power BI, Advanced Excel</td></tr>
           <tr><th>Toolkit</th><td>Git, Jupyter, PowerQuery, DAX, Regex</td></tr>
-          <tr><th>Domains</th><td>E‑commerce, Airlines, Finance, Operations</td></tr>
+          <tr><th>Domains</th><td>E-commerce, Airlines, Finance, Operations</td></tr>
           <tr><th>Interests</th><td>Predictive analytics, KPI design, Data quality</td></tr>
         </table>
       </div>
     </section>
 
-    <!-- PROJECTS -->
     <section class="section" id="projects">
       <h2>Projects</h2>
-      <p class="muted">Replace placeholders with your real links (GitHub repos, Tableau/Power BI reports, PDFs). Keep everything in one HTML file — you do <em>not</em> need separate CSS/JS files for GitHub Pages.</p>
+      <p class="muted">Replace placeholders with your real links (GitHub repos, Tableau/Power BI reports, PDFs). Keep everything in one HTML file — you do not need separate CSS/JS files for GitHub Pages.</p>
       <div class="grid cols-3">
-        <!-- Project 1 -->
         <article class="card">
           <div style="display:flex;justify-content:space-between;align-items:center">
-            <h3>E‑commerce Sales Performance</h3>
+            <h3>E-commerce Sales Performance</h3>
             <span class="tag">BI / KPI</span>
           </div>
-          <p>Analyzed revenue & profit by category, region and customer segment. Built an executive dashboard to track KPIs and flagged loss‑making SKUs.</p>
+          <p>Analyzed revenue & profit by category, region and customer segment. Built an executive dashboard to track KPIs and flagged loss-making SKUs.</p>
           <ul>
             <li><strong>Skills:</strong> SQL, Power BI/Tableau, DAX/LOD, Data Cleaning</li>
             <li><strong>Impact:</strong> Identified 5 SKUs with negative margins → proposed promo changes</li>
@@ -128,13 +125,12 @@ LIMIT 10;</code></pre>
           <div class="chips"><span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">SQL</span><span class="chip">DAX</span></div>
         </article>
 
-        <!-- Project 2 -->
         <article class="card">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <h3>Airline Delay Analysis</h3>
             <span class="tag">SQL / Python</span>
           </div>
-          <p>Explored delay causes by carrier and airport. Used window functions to rank on‑time performance and created a monthly ops report.</p>
+          <p>Explored delay causes by carrier and airport. Used window functions to rank on-time performance and created a monthly ops report.</p>
           <ul>
             <li><strong>Skills:</strong> SQL (CTE, Window), Python (pandas), Visualization</li>
             <li><strong>Insight:</strong> Weather drives ~40% of winter delays in the Northeast</li>
@@ -158,13 +154,12 @@ print(by_carrier.head(10))</code></pre>
           <div class="chips"><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Visualization</span></div>
         </article>
 
-        <!-- Project 3 -->
         <article class="card">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <h3>Data Cleaning & Automation</h3>
             <span class="tag">Automation</span>
           </div>
-          <p>Automated a CSV cleaning pipeline (date normalization, duplicates removal, category standardization). Generated weekly data‑quality reports.</p>
+          <p>Automated a CSV cleaning pipeline (date normalization, duplicates removal, category standardization). Generated weekly data-quality reports.</p>
           <ul>
             <li><strong>Skills:</strong> Python (pandas, regex), Scheduling</li>
             <li><strong>Impact:</strong> Cut manual processing time by 70% weekly</li>
@@ -179,14 +174,11 @@ from pathlib import Path
 
 def clean_csv(path_in, path_out):
     df = pd.read_csv(path_in)
-    # normalize date
     for col in df.columns:
         if 'date' in col.lower():
             df[col] = pd.to_datetime(df[col], errors='coerce')
-    # strip spaces, unify categories
     for col in df.select_dtypes('object').columns:
         df[col] = df[col].astype(str).str.strip().str.title()
-    # drop duplicates
     df = df.drop_duplicates()
     df.to_csv(path_out, index=False)
 
@@ -197,18 +189,16 @@ for p in Path('incoming').glob('*.csv'):
         </article>
       </div>
 
-      <!-- Optional data links row -->
       <div class="card" style="margin-top:16px">
         <strong>Datasets to try:</strong>
         <ul>
-          <li>Tableau Superstore (E‑commerce sample)</li>
-          <li>US BTS On‑Time Performance (Airlines)</li>
-          <li>Johns Hopkins COVID‑19 time series</li>
+          <li>Tableau Superstore (E-commerce sample)</li>
+          <li>US BTS On-Time Performance (Airlines)</li>
+          <li>Johns Hopkins COVID-19 time series</li>
         </ul>
       </div>
     </section>
 
-    <!-- SKILLS -->
     <section class="section" id="skills">
       <h2>Skills</h2>
       <div class="two-col">
@@ -231,7 +221,6 @@ for p in Path('incoming').glob('*.csv'):
       </div>
     </section>
 
-    <!-- RESUME / CV -->
     <section class="section" id="resume">
       <h2>Resume</h2>
       <div class="card">
@@ -244,7 +233,6 @@ for p in Path('incoming').glob('*.csv'):
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section class="section" id="contact">
       <h2>Contact</h2>
       <div class="card">
@@ -278,10 +266,7 @@ for p in Path('incoming').glob('*.csv'):
   </div>
 
   <script>
-    // Current year
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Simple mailto form (no backend needed)
     function sendMail(e){
       e.preventDefault();
       const f = e.target;
@@ -297,13 +282,5 @@ for p in Path('incoming').glob('*.csv'):
       return false;
     }
   </script>
-
-  <!-- How to use (comments only, won’t show on page):
-    1) Replace every "username" with your real GitHub username.
-    2) Swap placeholder links (GitHub/Tableau/Power BI/LinkedIn/email) with yours.
-    3) Add cv.pdf to the repo root for the Download CV button.
-    4) Commit/push this file as index.html to the repo username.github.io and enable Pages.
-    5) Add more projects by duplicating an <article class="card"> in the Projects section.
-  -->
 </body>
 </html>
