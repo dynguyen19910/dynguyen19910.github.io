@@ -274,7 +274,7 @@ for p in Path('incoming').glob('*.csv'):
       const email = encodeURIComponent(f.email.value.trim());
       const msg = encodeURIComponent(f.message.value.trim());
       const body = `Name: ${name}%0AEmail: ${email}%0A%0A${msg}`;
-      const mail = `mailto:your.email@example.com?subject=Contact%20from%20Portfolio&body=${body}`;
+      const mail = `mailto:jasonnguyen101191@gmail.com?subject=Contact%20from%20Portfolio&body=${body}`;
       window.location.href = mail;
       const label = document.getElementById('formMsg');
       if(label){ label.textContent = 'Opening your email client. Thanks!'; }
