@@ -54,7 +54,7 @@
     .overlay:target{display:block}
     .modal{position:relative;margin:5vh auto;max-width:1020px;width:95%;background:var(--card);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow-lg);overflow:hidden}
     .modal header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border)}
-    .modal .body{padding:16px} .modal .footer{padding:14px;border-top:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap}
+    .modal .body{padding:16px}
     .close-link{padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--fg)}
     .demo canvas{width:100%;height:420px;max-height:420px}
     footer{margin:44px 0 16px;color:var(--muted);text-align:center}
@@ -91,7 +91,6 @@
     <section class="section" id="projects">
       <h2>Projects</h2>
       <div class="grid cols-3">
-        <!-- E-commerce KPI -->
         <article class="card">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <h3>E-commerce Sales Performance</h3><span class="tag">BI / KPI</span>
@@ -109,7 +108,6 @@
           <div class="chips"><span class="chip">Dashboard</span><span class="chip">KPI</span><span class="chip">Visualization</span></div>
         </article>
 
-        <!-- Airline Delays -->
         <article class="card">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <h3>Airline Delay Analysis</h3><span class="tag">SQL / Python</span>
@@ -127,7 +125,6 @@
           <div class="chips"><span class="chip">SQL</span><span class="chip">pandas</span><span class="chip">EDA</span></div>
         </article>
 
-        <!-- Data Cleaning -->
         <article class="card">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <h3>Data Cleaning & Automation</h3><span class="tag">Python / ETL</span>
@@ -147,7 +144,6 @@
       </div>
     </section>
 
-    <!-- Goals -->
     <section class="section" id="goals">
       <h2>Career Goals</h2>
       <div class="grid cols-3">
@@ -166,7 +162,6 @@
       </div>
     </section>
 
-    <!-- Modals (self-contained demos that never 404) -->
     <div class="overlay" id="demo-ecom">
       <div class="modal">
         <header><strong>E-commerce – Live Preview</strong><a class="close-link" href="#close">Close</a></header>
@@ -210,7 +205,7 @@ def clean(df):
       </div>
     </section>
 
-    <footer>© <span id="year"></span> Nhat Nguyen · New-Gen AI Portfolio</footer>
+    <footer>© <span id="year"></span> Nhat Nguyen</footer>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -225,15 +220,13 @@ def clean(df):
       document.getElementById('formMsg').textContent='Opening your email client…';
       f.reset(); return false;
     }
-
-    // E-commerce demo
     function initEcom(){
       const ctx=document.getElementById('ecomChart');
       new Chart(ctx,{type:'bar',
         data:{labels:['Furniture','Office Supplies','Technology'],
           datasets:[
             {label:'Revenue ($k)', data:[120,95,155], borderWidth:1},
-            {label:'Profit ($k)',  data:[  8,11, 23], type:'line', tension:.35, borderWidth:2, pointRadius:3}
+            {label:'Profit ($k)',  data:[8,11,23], type:'line', tension:.35, borderWidth:2, pointRadius:3}
           ]},
         options:{responsive:true, maintainAspectRatio:false,
           plugins:{legend:{position:'top'}},
@@ -241,8 +234,6 @@ def clean(df):
         }
       });
     }
-
-    // Airline demo
     function initAir(){
       const ctx=document.getElementById('airChart');
       new Chart(ctx,{type:'bar',
@@ -251,14 +242,17 @@ def clean(df):
             {label:'Weather (%)', data:[42,36,39,33], stack:'d', borderWidth:1},
             {label:'Other (%)',   data:[58,64,61,67], stack:'d', borderWidth:1}
           ]},
-        options:{responsive:true, maintainAspectRatio:false,
+        options:{
+          responsive:true,
+          maintainAspectRatio:false,
           plugins:{legend:{position:'top'}},
-          scales:{x:{stacked:true}, y:{stacked:true, beginAtZero:true, ticks:{callback:v=>v+'%'}}}
+          scales:{
+            x:{stacked:true},
+            y:{stacked:true, beginAtZero:true, ticks:{callback:v=>v+'%'}}
+          }
         }
       });
     }
-
-    // Lazy init on open
     const inited={e:false,a:false};
     function maybeInit(){
       if(location.hash==='#demo-ecom' && !inited.e){initEcom(); inited.e=true;}
