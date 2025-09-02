@@ -48,7 +48,14 @@
     html{scroll-behavior:smooth}
     pre{background:var(--chip);border:1px solid var(--border);border-radius:12px;padding:12px;overflow:auto}
     code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
-    dialog::backdrop{background:rgba(0,0,0,.5)}
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:999}
+    .overlay:target{display:block}
+    .modal{position:relative;margin:4vh auto;max-width:980px;width:96%;background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+    .modal header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border)}
+    .modal .body{aspect-ratio:16/9;width:100%;background:var(--chip);border-bottom:1px solid var(--border)}
+    .modal .body iframe{width:100%;height:100%;border:0}
+    .modal .footer{padding:12px 16px;display:flex;gap:10px;flex-wrap:wrap}
+    .close-link{padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--fg)}
   </style>
 </head>
 <body>
@@ -91,3 +98,136 @@
     <section class="section" id="projects">
       <h2>Projects</h2>
       <div class="grid cols-3">
+        <article class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3>E-commerce Sales Performance</h3>
+            <span class="tag">BI / KPI</span>
+          </div>
+          <p>Analyzed revenue & profit by category, region and customer segment. Built an executive dashboard to track KPIs and flagged loss-making SKUs.</p>
+          <ul>
+            <li><strong>Skills:</strong> SQL, Power BI/Tableau, DAX/LOD, Data Cleaning</li>
+            <li><strong>Impact:</strong> Identified 5 SKUs with negative margins → proposed promo changes</li>
+          </ul>
+          <div class="project-actions">
+            <a class="btn" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">View Dashboard</a>
+            <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">GitHub Repo</a>
+            <a class="btn secondary" href="resume/ecommerce-case-study.pdf" target="_blank" rel="noopener">Case Study (PDF)</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3>Airline Delay Analysis</h3>
+            <span class="tag">SQL / Python</span>
+          </div>
+          <p>Explored delay causes by carrier and airport. Used window functions to rank on-time performance and created a monthly ops report.</p>
+          <ul>
+            <li><strong>Skills:</strong> SQL (CTE, Window), Python (pandas), Visualization</li>
+            <li><strong>Insight:</strong> Weather drives ~40% of winter delays in the Northeast</li>
+          </ul>
+          <div class="project-actions">
+            <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">GitHub Repo</a>
+            <a class="btn" href="#pbi-airline">Power BI Report</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <h3>Data Cleaning & Automation</h3>
+            <span class="tag">Automation</span>
+          </div>
+          <p>Automated a CSV cleaning pipeline (date normalization, duplicates removal, category standardization). Generated weekly data-quality reports.</p>
+          <ul>
+            <li><strong>Skills:</strong> Python (pandas, regex), Scheduling</li>
+            <li><strong>Impact:</strong> Cut manual processing time by 70% weekly</li>
+          </ul>
+          <div class="project-actions">
+            <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">GitHub Repo</a>
+            <a class="btn" href="resume/sample-report.pdf" target="_blank" rel="noopener">Sample Report</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="overlay" id="pbi-airline">
+        <div class="modal">
+          <header><strong>Airline Delay – Power BI Preview</strong><a class="close-link" href="#close">Close</a></header>
+          <div class="body">
+            <iframe title="Power BI Sample Report"
+              src="https://app.powerbi.com/view?r=eyJrIjoiZTA4MmI5M2QtMjNjNy00MjhiLTgxN2MtY2I0N2NkNzA0OGQ3IiwidCI6IjVjYjVlZDUzLTNkNDAtNDlmOS04Y2VjLWQyY2Y2MmZkYmQ3ZSIsImMiOjF9"
+              frameborder="0" allowFullScreen="true" style="width:100%;height:100%"></iframe>
+          </div>
+          <div class="footer">
+            <a class="btn" href="https://app.powerbi.com/view?r=eyJrIjoiZTA4MmI5M2QtMjNjNy00MjhiLTgxN2MtY2I0N2NkNzA0OGQ3IiwidCI6IjVjYjVlZDUzLTNkNDAtNDlmOS04Y2VjLWQyY2Y2MmZkYmQ3ZSIsImMiOjF9" target="_blank" rel="noopener">Open Full Report</a>
+            <a class="btn secondary" href="#close">Close</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <strong>Datasets to try:</strong>
+        <ul>
+          <li>Tableau Superstore (E-commerce sample)</li>
+          <li>US BTS On-Time Performance (Airlines)</li>
+          <li>Johns Hopkins COVID-19 time series</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <h2>Skills</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>Technical</h3>
+          <div class="chips">
+            <span class="chip">SQL</span><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">Power BI</span>
+            <span class="chip">Tableau</span><span class="chip">Excel (Advanced)</span><span class="chip">Git</span>
+            <span class="chip">Regex</span><span class="chip">DAX</span><span class="chip">PowerQuery</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Methods & Soft Skills</h3>
+          <ul>
+            <li>EDA, Data Cleaning, KPI design</li>
+            <li>Storytelling with dashboards & reports</li>
+            <li>Collaboration & version control (Git)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="resume">
+      <h2>Resume</h2>
+      <div class="card">
+        <p>Download my CV below.</p>
+        <div class="project-actions">
+          <a class="btn" href="resume/cv.pdf" download>⬇️ Download CV (PDF)</a>
+          <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn secondary" href="mailto:jasonnguyen101191@gmail.com">Email</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>Interested in working together? Email me directly or use the form.</p>
+        <p><strong>Email:</strong> <a href="mailto:jasonnguyen101191@gmail.com">jasonnguyen101191@gmail.com</a></p>
+        <form onsubmit="return sendMail(event)" class="two-col">
+          <div>
+            <label>Name<br/>
+              <input required name="name" placeholder="Your name" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--fg)">
+            </label>
+          </div>
+          <div>
+            <label>Email<br/>
+              <input required type="email" name="email" placeholder="email@domain.com" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--fg)">
+            </label>
+          </div>
+          <div style="grid-column:1/-1">
+            <label>Message<br/>
+              <textarea required name="message" rows="4" placeholder="Tell me about the role or project..." style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--fg)"></textarea>
+            </label>
+          </div>
+          <div>
+            <button class="btn" type="submit">Send</button>
+            <
