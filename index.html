@@ -48,6 +48,8 @@
     html{scroll-behavior:smooth}
     pre{background:var(--chip);border:1px solid var(--border);border-radius:12px;padding:12px;overflow:auto}
     code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+    \.note{display:flex;align-items:flex-start;gap:10px;background:var(--chip);border:1px solid var(--border);padding:12px 14px;border-radius:12px}
+    \.note .close{margin-left:auto;background:transparent;border:0;color:var\(--muted\);cursor:pointer;font-weight:700;font-size:18px;line-height:1}
     dialog::backdrop{background:rgba(0,0,0,.5)}
   </style>
 </head>
@@ -90,7 +92,7 @@
 
     <section class="section" id="projects">
       <h2>Projects</h2>
-      <p class="muted">Replace placeholders with your real links (GitHub repos, Tableau/Power BI reports, PDFs). Keep everything in one HTML file — you do not need separate CSS/JS files for GitHub Pages.</p>
+      <div class="note" id="placeholders-note"><div style="font-weight:600;margin-right:6px">Heads up</div><div class="muted" style="flex:1">Replace placeholders with your real links (GitHub repos, Tableau/Power BI reports, PDFs). Keep everything in one HTML file — you do not need separate CSS/JS files for GitHub Pages.</div><button class="close" aria-label="Dismiss" data-close-note="placeholders-note">×</button></div>
       <div class="grid cols-3">
         <article class="card">
           <div style="display:flex;justify-content:space-between;align-items:center">
@@ -321,6 +323,11 @@ for p in Path('incoming').glob('*.csv'):
       if(e.target.closest('[data-close]')){
         const dlg=e.target.closest('dialog');
         if(dlg?.open) dlg.close();
+      }
+      const closeId=e.target.getAttribute('data-close-note');
+      if(closeId){
+        const el=document.getElementById(closeId);
+        if(el) el.style.display='none';
       }
     });
     window.PBI_AIRLINE_URL="";
