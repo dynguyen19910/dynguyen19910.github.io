@@ -48,8 +48,6 @@
     .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     @media (max-width:820px){.two-col{grid-template-columns:1fr}}
     footer{margin:40px 0 16px;color:var(--muted);text-align:center}
-
-    /* Overlays (hash-based, works everywhere) */
     .overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:999}
     .overlay:target{display:block}
     .modal{position:relative;margin:4vh auto;max-width:1100px;width:96%;background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg)}
@@ -58,7 +56,6 @@
     .modal .body iframe{width:100%;height:100%;border:0}
     .modal .footer{padding:12px 16px;display:flex;gap:10px;flex-wrap:wrap;background:#f7f8fc}
     .close-link{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--fg)}
-    .fallback{color:#fff;text-align:center;padding:24px}
   </style>
 </head>
 <body>
@@ -81,7 +78,7 @@
         <p>I build polished dashboards, automate clean data pipelines, and extract insights with SQL and Python. Browse embedded previews and real data sources below.</p>
         <div class="stats">
           <div class="stat"><div class="kpi"><b>12+</b> dashboards</div><div class="muted">Power BI · Tableau</div></div>
-          <div class="stat"><div class="kpi"><b>7</b> end‑to‑end projects</div><div class="muted">ETL · SQL · EDA</div></div>
+          <div class="stat"><div class="kpi"><b>7</b> end-to-end projects</div><div class="muted">ETL · SQL · EDA</div></div>
           <div class="stat"><div class="kpi"><b>4</b> case studies</div><div class="muted">Business impact</div></div>
         </div>
         <div class="project-actions" style="margin-top:18px">
@@ -94,7 +91,7 @@
         <table class="table">
           <tr><th>Core Skills</th><td>SQL, Python (pandas), Tableau, Power BI, Excel</td></tr>
           <tr><th>Toolkit</th><td>Git, Jupyter, PowerQuery, DAX, Regex</td></tr>
-          <tr><th>Domains</th><td>E‑commerce, Airlines, Finance, Operations</td></tr>
+          <tr><th>Domains</th><td>E-commerce, Airlines, Finance, Operations</td></tr>
           <tr><th>Focus</th><td>Predictive analytics, KPI design, Data quality</td></tr>
         </table>
       </div>
@@ -104,7 +101,7 @@
       <h2>Projects</h2>
       <div class="grid cols-3">
         <article class="card">
-          <div style="display:flex;justify-content:space-between;align-items:center"><h3>E‑commerce Sales Performance</h3><span class="tag">Tableau / KPI</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center"><h3>E-commerce Sales Performance</h3><span class="tag">Tableau / KPI</span></div>
           <p>Executive dashboard tracking revenue, margin, and returns across segments with parameterized drilldowns.</p>
           <ul>
             <li><strong>Skills:</strong> LOD expressions, data modeling, KPI design</li>
@@ -121,14 +118,14 @@
 
         <article class="card">
           <div style="display:flex;justify-content:space-between;align-items:center"><h3>Airline Delay Analysis</h3><span class="tag">Power BI / SQL+Python</span></div>
-          <p>Weather vs. non‑weather delays by carrier and airport, using window functions and a monthly ops report.</p>
+          <p>Weather vs. non-weather delays by carrier and airport, using window functions and a monthly ops report.</p>
           <ul>
             <li><strong>Skills:</strong> SQL CTEs & window functions, DAX measures, pandas EDA</li>
             <li><strong>Insight:</strong> Weather accounts for ~40% of winter delays in the Northeast</li>
           </ul>
           <div class="project-actions">
-            <a class="btn" href="https://learn.microsoft.com/power-bi/create-reports/sample-datasets#retail-analysis-sample" target="_blank" rel="noopener">View Sample</a>
-            <a class="btn secondary" href="https://www.transtats.bts.gov/ONTIME/Departures.aspx" target="_blank" rel="noopener">US BTS On‑Time Data</a>
+            <a class="btn" href="https://learn.microsoft.com/power-bi/create-reports/sample-datasets#retail-analysis-sample" target="_blank" rel="noopener">Preview</a>
+            <a class="btn secondary" href="https://www.transtats.bts.gov/ONTIME/Departures.aspx" target="_blank" rel="noopener">US BTS On-Time Data</a>
             <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">SQL/Python Repo</a>
           </div>
           <div class="chips"><span class="chip">Power BI</span><span class="chip">SQL</span><span class="chip">pandas</span></div>
@@ -136,37 +133,26 @@
 
         <article class="card">
           <div style="display:flex;justify-content:space-between;align-items:center"><h3>Data Cleaning & Automation</h3><span class="tag">Python / ETL</span></div>
-          <p>CSV normalization pipeline with scheduled runs and weekly data‑quality snapshots.</p>
+          <p>CSV normalization pipeline with scheduled runs and weekly data-quality snapshots.</p>
           <ul>
             <li><strong>Skills:</strong> pandas, regex, scheduling</li>
             <li><strong>Impact:</strong> Cut manual processing by 70%</li>
           </ul>
           <div class="project-actions">
-            <a class="btn" href="#dq-report" data-src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf">Preview Report</a>
+            <a class="btn" href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" rel="noopener">Preview</a>
             <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">Automation Repo</a>
             <a class="btn secondary" href="https://www.kaggle.com/datasets" target="_blank" rel="noopener">Kaggle Sources</a>
           </div>
           <div class="chips"><span class="chip">Python</span><span class="chip">ETL</span><span class="chip">pandas</span></div>
         </article>
       </div>
-      <!-- Overlays (hash + JS populates iframe src with timeout fallback) -->
-      
+
+      <div class="overlay" id="tableau-superstore">
         <div class="modal">
           <header><strong>Tableau – Live Preview</strong><a class="close-link" href="#close">Close</a></header>
           <div class="body" id="body-tableau"><iframe id="frame-tableau" title="Tableau Viz"></iframe></div>
           <div class="footer">
             <a id="open-tableau" class="btn" href="#" target="_blank" rel="noopener">Open on Tableau Public</a>
-            <a class="btn secondary" href="#close">Close</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="overlay" id="dq-report">
-        <div class="modal">
-          <header><strong>Data Quality – Sample PDF</strong><a class="close-link" href="#close">Close</a></header>
-          <div class="body" id="body-pdf"><iframe id="frame-pdf" title="Sample PDF"></iframe></div>
-          <div class="footer">
-            <a id="open-pdf" class="btn" href="#" target="_blank" rel="noopener">Open PDF</a>
             <a class="btn secondary" href="#close">Close</a>
           </div>
         </div>
@@ -199,7 +185,7 @@
       <h2>Example Sources I Use</h2>
       <div class="card">
         <div class="chips">
-          <a class="chip" href="https://www.transtats.bts.gov/ONTIME/Departures.aspx" target="_blank" rel="noopener">US BTS On‑Time</a>
+          <a class="chip" href="https://www.transtats.bts.gov/ONTIME/Departures.aspx" target="_blank" rel="noopener">US BTS On-Time</a>
           <a class="chip" href="https://public.tableau.com/app/profile/tableau.public.sample.workbooks/vizzes" target="_blank" rel="noopener">Tableau Public Samples</a>
           <a class="chip" href="https://www.kaggle.com/datasets" target="_blank" rel="noopener">Kaggle Datasets</a>
           <a class="chip" href="https://data.world/" target="_blank" rel="noopener">data.world</a>
@@ -278,17 +264,8 @@
       const frame = target.querySelector('iframe');
       const external = target.querySelector('.footer a.btn');
       if(frame && src){
-        // reset for reliable reloads
         frame.removeAttribute('src');
         setTimeout(()=>{ frame.src = src; }, 0);
-        // timeout fallback if embed blocks iFrames
-        const box = target.querySelector('.body');
-        let armed = true;
-        const onload = ()=>{ armed=false; frame.removeEventListener('load', onload); if(box?.querySelector('.fallback')) box.querySelector('.fallback').remove(); };
-        frame.addEventListener('load', onload, {once:true});
-        setTimeout(()=>{
-          if(armed && box){ box.innerHTML = `<div class="fallback">If the embed doesn't load in your browser, <a href='${src}' target='_blank' rel='noopener' class='btn' style='background:#0a84ff;padding:10px 14px;border-radius:10px;text-decoration:none'>open the full report</a>.</div>`; }
-        }, 12000);
       }
       if(external && src) external.href = src;
     }
