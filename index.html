@@ -247,19 +247,4 @@ def clean(df):
           maintainAspectRatio:false,
           plugins:{legend:{position:'top'}},
           scales:{
-            x:{stacked:true},
-            y:{stacked:true, beginAtZero:true, ticks:{callback:v=>v+'%'}}
-          }
-        }
-      });
-    }
-    const inited={e:false,a:false};
-    function maybeInit(){
-      if(location.hash==='#demo-ecom' && !inited.e){initEcom(); inited.e=true;}
-      if(location.hash==='#demo-air'  && !inited.a){initAir();  inited.a=true;}
-    }
-    window.addEventListener('hashchange', maybeInit);
-    document.addEventListener('DOMContentLoaded', maybeInit);
-  </script>
-</body>
-</html>
+            x:{stacked
