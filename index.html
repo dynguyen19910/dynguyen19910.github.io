@@ -56,21 +56,21 @@
     .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--border)}
     .overlay{position:fixed;inset:0;background:rgba(2,6,14,.80);display:none;z-index:999}
     .overlay:target{display:block}
-    .modal{position:relative;margin:5vh auto;max-width:1060px;width:95%;background:var(--card);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow-lg);overflow:hidden}
+    .modal{position:relative;margin:5vh auto;max-width:1100px;width:95%;background:var(--card);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow-lg);overflow:hidden}
     .modal header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border)}
     .modal .body{padding:16px}
     .close-link{padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--fg)}
     .demo{display:grid;gap:14px}
     .tbl{border-collapse:collapse;width:100%;font-size:14px}
-    .tbl th,.tbl td{border:1px solid var(--border);padding:8px 10px;text-align:left}
+    .tbl th,.tbl td{border:1px solid var(--border);padding:8px 10px;text-align:center}
     .tbl th{background:rgba(255,255,255,.05)}
-    .twocol{display:flex;gap:20px;flex-wrap:wrap}
-    .col{flex:1;min-width:280px}
-    .skills-ring{display:flex;gap:20px;flex-wrap:wrap}
-    .ring{background:var(--glass);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow-sm);padding:16px;display:flex;align-items:center;gap:16px;min-width:280px}
-    .ring canvas{width:110px;height:110px}
-    .ring h4{margin:0}
-    .ring p{margin:4px 0 0;color:var(--muted)}
+    .twocol{display:grid;grid-template-columns:1.6fr .9fr;gap:18px}
+    .side{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:14px}
+    .side h4{margin:0 0 8px}
+    .barrow{display:flex;align-items:center;gap:10px;margin:6px 0}
+    .barlabel{width:110px}
+    .bar{flex:1;height:10px;border-radius:999px;background:#0f1421;border:1px solid var(--border);overflow:hidden}
+    .bar>span{display:block;height:100%;background:linear-gradient(90deg,#00d4ff,#78ffce)}
     footer{margin:44px 0 16px;color:var(--muted);text-align:center}
     pre{background:#0b0e14;color:#e9eefc;border-radius:12px;padding:14px;overflow:auto;font-size:13px;border:1px solid var(--border)}
     code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
@@ -104,21 +104,11 @@
 
     <section class="section" id="skills">
       <h2>Skills</h2>
-      <div class="skills-ring">
-        <div class="ring">
-          <canvas id="ringTableau"></canvas>
-          <div>
-            <h4>Tableau</h4>
-            <p>Dashboarding, KPI design, storytelling</p>
-          </div>
-        </div>
-        <div class="ring">
-          <canvas id="ringSQL"></canvas>
-          <div>
-            <h4>SQL</h4>
-            <p>CTEs, window functions, modeling</p>
-          </div>
-        </div>
+      <div class="card">
+        <div class="barrow"><div class="barlabel">Tableau</div><div class="bar"><span style="width:95%"></span></div><div>95%</div></div>
+        <div class="barrow"><div class="barlabel">SQL</div><div class="bar"><span style="width:92%"></span></div><div>92%</div></div>
+        <div class="barrow"><div class="barlabel">Power BI</div><div class="bar"><span style="width:88%"></span></div><div>88%</div></div>
+        <div class="barrow"><div class="barlabel">Python</div><div class="bar"><span style="width:85%"></span></div><div>85%</div></div>
       </div>
     </section>
 
@@ -146,10 +136,10 @@
           <div style="display:flex;justify-content:space-between;align-items:center">
             <h3>Airline Delay Analysis</h3><span class="tag">SQL / Python</span>
           </div>
-          <p>Winter vs. summer delay composition by carrier shown as clear percentage tables.</p>
+          <p>Monthly delay percentages by carrier with season insights. Click a carrier to see the worst month and date per season.</p>
           <ul>
             <li><strong>Skills:</strong> SQL CTEs & window functions, pandas EDA</li>
-            <li><strong>Insight:</strong> Weather ≈ 40% of winter delays in the Northeast</li>
+            <li><strong>Insight:</strong> Weather spikes in winter for northern hubs</li>
           </ul>
           <div class="project-actions">
             <a class="btn" href="#demo-air">Live Preview</a>
@@ -201,7 +191,7 @@
         <header><strong>E-commerce – Live Preview</strong><a class="close-link" href="#close">Close</a></header>
         <div class="body">
           <div class="demo">
-            <canvas id="ecomChart"></canvas>
+            <canvas id="ecomChart" height="420"></canvas>
           </div>
         </div>
       </div>
@@ -209,16 +199,17 @@
 
     <div class="overlay" id="demo-air">
       <div class="modal">
-        <header><strong>Airline Delays – Percentage Table</strong><a class="close-link" href="#close">Close</a></header>
+        <header><strong>Airline Delays – Monthly % by Carrier</strong><a class="close-link" href="#close">Close</a></header>
         <div class="body">
-          <div class="demo">
-            <label>Season
-              <select id="airSeason">
-                <option value="Winter">Winter</option>
-                <option value="Summer">Summer</option>
-              </select>
-            </label>
-            <table class="tbl" id="airTbl"></table>
+          <div class="twocol">
+            <div>
+              <table class="tbl" id="airMonthTbl"></table>
+              <div style="font-size:12px;color:var(--muted);margin-top:6px">Higher % = larger share of delayed arrivals that month.</div>
+            </div>
+            <div class="side" id="airSide">
+              <h4>Details</h4>
+              <div id="airSideBody" style="font-size:14px;color:var(--muted)">Select a carrier row to see the worst month and date per season.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -229,12 +220,12 @@
         <header><strong>Data Cleaning – Raw vs Cleaned</strong><a class="close-link" href="#close">Close</a></header>
         <div class="body">
           <div class="demo">
-            <div class="twocol">
-              <div class="col">
+            <div class="twocol" style="grid-template-columns:1fr 1fr">
+              <div>
                 <h4>Raw</h4>
                 <table class="tbl" id="rawTbl"></table>
               </div>
-              <div class="col">
+              <div>
                 <h4>Cleaned</h4>
                 <table class="tbl" id="cleanTbl"></table>
               </div>
@@ -286,15 +277,6 @@ def clean(df):
       f.reset(); return false;
     }
 
-    function ringChart(el, pct){
-      const ctx=document.getElementById(el);
-      new Chart(ctx,{type:'doughnut',
-        data:{labels:['Proficiency',''],
-          datasets:[{data:[pct,100-pct]}]},
-        options:{cutout:'70%', plugins:{legend:{display:false},tooltip:{enabled:false}}}
-      });
-    }
-
     function initEcom(){
       const ctx=document.getElementById('ecomChart');
       new Chart(ctx,{type:'bar',
@@ -307,20 +289,56 @@ def clean(df):
       });
     }
 
-    const airData={
-      Winter:[{carrier:'AA',weather:42,other:58},{carrier:'DL',weather:36,other:64},{carrier:'UA',weather:39,other:61},{carrier:'WN',weather:33,other:67}],
-      Summer:[{carrier:'AA',weather:18,other:82},{carrier:'DL',weather:15,other:85},{carrier:'UA',weather:16,other:84},{carrier:'WN',weather:14,other:86}]
+    const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const seasonMap={Winter:[11,0,1],Spring:[2,3,4],Summer:[5,6,7],Fall:[8,9,10]};
+    const airMonthly={
+      AA:[38,35,27,22,20,18,19,21,24,28,31,36],
+      DL:[34,32,25,21,19,17,18,19,22,25,29,33],
+      UA:[36,33,26,22,21,18,19,20,23,26,30,35],
+      WN:[31,29,23,19,18,16,17,18,20,22,26,30]
     };
-    function renderAir(season){
-      const rows=airData[season];
-      const el=document.getElementById('airTbl');
-      el.innerHTML='<tr><th>Carrier</th><th>Weather %</th><th>Other %</th><th>Total</th></tr>'+
-        rows.map(r=>`<tr><td>${r.carrier}</td><td>${r.weather}%</td><td>${r.other}%</td><td>${r.weather+r.other}%</td></tr>`).join('');
+
+    function renderAirMonthTable(){
+      const tbl=document.getElementById('airMonthTbl');
+      let thead='<tr><th>Carrier</th>'+months.map(m=>`<th>${m}</th>`).join('')+'<th>Max</th></tr>';
+      let rows='';
+      Object.keys(airMonthly).forEach(c=>{
+        const vals=airMonthly[c];
+        const max=Math.max(...vals), maxIdx=vals.indexOf(max);
+        rows+=`<tr data-carrier="${c}" style="cursor:pointer"><td><strong>${c}</strong></td>`+
+              vals.map((v,i)=>`<td${i===maxIdx?' style="background:rgba(255,255,255,.08)"':''}>${v}%</td>`).join('')+
+              `<td><b>${months[maxIdx]}</b> ${max}%</td></tr>`;
+      });
+      tbl.innerHTML=thead+rows;
     }
-    function initAirTable(){
-      const sel=document.getElementById('airSeason');
-      renderAir(sel.value);
-      sel.addEventListener('change',e=>renderAir(e.target.value));
+
+    function worstBySeason(vals){
+      const out={};
+      for(const s of Object.keys(seasonMap)){
+        const idxs=seasonMap[s];
+        let bestI=idxs[0], bestV=vals[bestI];
+        idxs.forEach(i=>{ if(vals[i]>bestV){ bestV=vals[i]; bestI=i } });
+        out[s]={month:months[bestI], value:bestV, monthIndex:bestI};
+      }
+      return out;
+    }
+
+    function detailPanel(carrier){
+      const side=document.getElementById('airSideBody');
+      const vals=airMonthly[carrier];
+      const seasons=worstBySeason(vals);
+      const overallV=Math.max(...vals), overallI=vals.indexOf(overallV);
+      const year=2023;
+      function dateForMonth(mi){const mm=String(mi+1).padStart(2,'0');return `${year}-${mm}-15`;}
+      side.innerHTML=
+        `<div style="margin-bottom:8px"><strong>${carrier}</strong> worst delay overview</div>`+
+        `<table class="tbl" style="font-size:13px">
+          <tr><th>Season</th><th>Worst Month</th><th>Delay %</th><th>Worst Date</th></tr>
+          ${Object.keys(seasons).map(s=>{
+            const m=seasons[s]; return `<tr><td>${s}</td><td>${m.month}</td><td>${m.value}%</td><td>${dateForMonth(m.monthIndex)}</td></tr>`;
+          }).join('')}
+          <tr><th colspan="2">Overall Worst</th><th>${overallV}%</th><th>${dateForMonth(overallI)}</th></tr>
+        </table>`;
     }
 
     const rawRows=[
@@ -330,13 +348,12 @@ def clean(df):
       {order_id:'WA-2019-502210', order_date:'2019-07-14', category:'technology', customer:'le  anh  ', amount:'$2,010'}
     ];
     function formatUSD(n){if(n===null||n===undefined||n==='')return '';return '$'+Number(n).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});}
-    function renderTable(el, rows, formatMoney=false){
+    function renderTable(el, rows, money=false){
       if(!rows.length){el.innerHTML='';return}
       const cols=Object.keys(rows[0]);
       el.innerHTML='<tr>'+cols.map(c=>`<th>${c}</th>`).join('')+'</tr>'+
         rows.map(r=>'<tr>'+cols.map(c=>{
-          const v=r[c];
-          return `<td>${formatMoney&&c==='amount'?formatUSD(v):v}</td>`;
+          const v=r[c]; return `<td>${money&&c==='amount'?formatUSD(v):v}</td>`;
         }).join('')+'</tr>').join('');
     }
     function cleanRows(){
@@ -363,16 +380,18 @@ def clean(df):
       });
     }
 
-    const inited={e:false,air:false,cl:false,skills:false};
+    const inited={e:false,air:false,cl:false};
     function maybeInit(){
       const h=location.hash;
-      if(!inited.skills){
-        ringChart('ringTableau', 92);
-        ringChart('ringSQL', 95);
-        inited.skills=true;
-      }
       if(h==='#demo-ecom' && !inited.e){initEcom(); inited.e=true}
-      if(h==='#demo-air'  && !inited.air){initAirTable(); inited.air=true}
+      if(h==='#demo-air'  && !inited.air){
+        renderAirMonthTable();
+        document.getElementById('airMonthTbl').addEventListener('click',e=>{
+          const tr=e.target.closest('tr[data-carrier]'); if(!tr) return;
+          detailPanel(tr.dataset.carrier);
+        });
+        inited.air=true;
+      }
       if(h==='#demo-clean'&& !inited.cl){initCleaner(); inited.cl=true}
     }
     window.addEventListener('hashchange', maybeInit);
