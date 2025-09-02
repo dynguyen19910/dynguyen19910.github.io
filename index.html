@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nhat Nguyen | Data Analyst Portfolio</title>
+  <meta name="description" content="Data Analyst portfolio showcasing projects, skills, CV and contact details." />
   <meta name="color-scheme" content="light" />
   <style>
     :root{--bg:#ffffff;--fg:#0b0d12;--muted:#5e677b;--card:#f8f9ff;--acc:#0a84ff;--acc2:#34c759;--border:#e7eaf5;--chip:#eef2ff;--shadow-sm:0 6px 14px rgba(21,35,60,.08);--shadow:0 18px 60px rgba(20,30,55,.12);--shadow-lg:0 30px 90px rgba(12,18,35,.18);--radius:18px}
@@ -18,44 +19,18 @@
     nav a:hover{background:var(--chip)}
     .btn{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:#fff;border:none;border-radius:12px;padding:12px 16px;font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm)}
     .btn.secondary{background:#fff;border:1px solid var(--border);color:var(--fg)}
-    .hero{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center;padding:34px;border:1px solid var(--border);border-radius:var(--radius);background:linear-gradient(180deg,#f6fbff,transparent);box-shadow:var(--shadow)}
-    .flare{position:absolute;inset:-1px -1px auto auto;width:240px;height:240px;background:radial-gradient(closest-side,rgba(10,132,255,.18),transparent 70%);filter:blur(6px)}
-    .hero h1{font-size:clamp(32px,4vw,52px);line-height:1.15;margin:0 0 12px}
-    .hero p{margin:0 0 18px;color:var(--muted);font-size:18px}
-    .stats{display:flex;gap:14px;flex-wrap:wrap}
-    .stat{background:#fff;border:1px solid var(--border);padding:14px 16px;border-radius:14px;min-width:190px;box-shadow:var(--shadow-sm)}
-    .kpi{display:flex;gap:10px;align-items:center}
-    .kpi b{font-size:20px}
     .section{padding:36px 0}
     .section h2{font-size:32px;margin:0 0 14px}
     .grid{display:grid;gap:20px}
     .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    @media (max-width:980px){.hero{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:1fr 1fr}}
-    @media (max-width:640px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
-    .card{position:relative;background:linear-gradient(180deg,#ffffff,#f3f6ff);border:1px solid var(--border);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transform:translateZ(0);transition:transform .25s ease, box-shadow .25s ease}
-    .card::before{content:"";position:absolute;inset:-40% -40% auto auto;width:300px;height:300px;background:radial-gradient(closest-side,rgba(122,184,255,.22),transparent 70%);filter:blur(8px);pointer-events:none}
+    @media (max-width:640px){.grid.cols-3{grid-template-columns:1fr}}
+    .card{background:#fff;border:1px solid var(--border);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .25s ease, box-shadow .25s ease}
     .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-    .card h3{margin:0 0 8px}
-    .muted{color:var(--muted)}
     .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
     .chip{background:#fff;border:1px solid var(--border);padding:6px 12px;border-radius:999px;font-size:13px;box-shadow:var(--shadow-sm)}
     .project-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .table{width:100%;border-collapse:collapse;font-size:14px}
-    .table th,.table td{border-bottom:1px solid var(--border);padding:10px 8px;text-align:left}
     .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:#fff;border:1px solid var(--border)}
-    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    @media (max-width:820px){.two-col{grid-template-columns:1fr}}
     footer{margin:40px 0 16px;color:var(--muted);text-align:center}
-
-    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:999}
-    .overlay:target{display:block}
-    .modal{position:relative;margin:4vh auto;max-width:1100px;width:96%;background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg)}
-    .modal header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border);background:#f7f8fc}
-    .modal .body{aspect-ratio:16/9;width:100%;background:#000;display:flex;align-items:center;justify-content:center}
-    .modal .body iframe{width:100%;height:100%;border:0}
-    .modal .footer{padding:12px 16px;display:flex;gap:10px;flex-wrap:wrap;background:#f7f8fc}
-    .close-link{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--fg)}
     pre{background:#0b0d12;color:#e9eefc;border-radius:12px;padding:14px;overflow:auto;font-size:13px}
     code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
   </style>
@@ -67,71 +42,42 @@
       <nav>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
-        <a href="#sources">Sources</a>
         <a href="#resume">Resume</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
-    <section class="hero" id="home">
-      <div class="flare"></div>
-      <div>
-        <h1>Turning data into crisp, interactive stories.</h1>
-        <p>I build polished dashboards, automate clean data pipelines, and extract insights with SQL and Python. Browse embedded previews and real data sources below.</p>
-        <div class="stats">
-          <div class="stat"><div class="kpi"><b>12+</b> dashboards</div><div class="muted">Power BI · Tableau</div></div>
-          <div class="stat"><div class="kpi"><b>7</b> end-to-end projects</div><div class="muted">ETL · SQL · EDA</div></div>
-          <div class="stat"><div class="kpi"><b>4</b> case studies</div><div class="muted">Business impact</div></div>
-        </div>
-        <div class="project-actions" style="margin-top:18px">
-          <a class="btn" href="#projects">View Projects</a>
-          <a class="btn secondary" href="#resume">Download CV</a>
-        </div>
-      </div>
-      <div class="card">
-        <h3 style="margin-top:0">Profile</h3>
-        <table class="table">
-          <tr><th>Core Skills</th><td>SQL, Python (pandas), Tableau, Power BI, Excel</td></tr>
-          <tr><th>Toolkit</th><td>Git, Jupyter, PowerQuery, DAX, Regex</td></tr>
-          <tr><th>Domains</th><td>E-commerce, Airlines, Finance, Operations</td></tr>
-          <tr><th>Focus</th><td>Predictive analytics, KPI design, Data quality</td></tr>
-        </table>
-      </div>
-    </section>
-
     <section class="section" id="projects">
       <h2>Projects</h2>
       <div class="grid cols-3">
         <article class="card">
-          <div style="display:flex;justify-content:space-between;align-items:center"><h3>E-commerce Sales Performance</h3><span class="tag">Tableau / KPI</span></div>
-          <p>Executive dashboard tracking revenue, margin, and returns across segments with parameterized drilldowns.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center"><h3>E‑commerce Sales Performance</h3><span class="tag">Tableau / KPI</span></div>
+          <p>Interactive dashboard exploring revenue and profit by category, region and customer segment.</p>
           <ul>
-            <li><strong>Skills:</strong> LOD expressions, data modeling, KPI design</li>
-            <li><strong>Impact:</strong> Highlighted unprofitable SKUs and reduced return rate 8%</li>
+            <li><strong>Skills:</strong> SQL, Tableau, KPI design</li>
+            <li><strong>Impact:</strong> Identified loss‑making SKUs and improved promo strategy</li>
           </ul>
           <div class="project-actions">
-            <a class="btn" href="#tableau-superstore" data-src="https://public.tableau.com/views/WorldIndicators/GDPpercapita?:showVizHome=no&:embed=true">Live Preview</a>
-            <a class="btn secondary" href="https://public.tableau.com/app/profile/tableau.public.sample.workbooks/vizzes" target="_blank" rel="noopener">Tableau Samples</a>
-            <a class="btn secondary" href="https://www.kaggle.com/datasets/vivek468/superstore-dataset-final" target="_blank" rel="noopener">Sample Dataset</a>
+            <a class="btn" href="https://public.tableau.com/views/WorldIndicators/GDPpercapita?:showVizHome=no&:embed=y" target="_blank" rel="noopener">Preview Dashboard</a>
+            <a class="btn secondary" href="https://www.kaggle.com/datasets/vivek468/superstore-dataset-final" target="_blank" rel="noopener">Dataset</a>
             <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">GitHub Repo</a>
           </div>
-          <details style="margin-top:12px"><summary><strong>Sample LOD</strong></summary>
-            <pre><code>/* Profit by Segment with parameterized Date range */
-{ FIXED [Segment] : SUM( IF [Order Date] &gt;= [Start Date]
-  AND [Order Date] &lt;= [End Date] THEN [Profit] END ) }</code></pre>
+          <details style="margin-top:12px"><summary><strong>Sample LOD (Tableau)</strong></summary>
+            <pre><code>{ FIXED [Segment] : SUM( IF [Order Date] >= [Start Date]
+  AND [Order Date] <= [End Date] THEN [Profit] END ) }</code></pre>
           </details>
-          <div class="chips"><span class="chip">Tableau</span><span class="chip">LOD</span><span class="chip">KPI</span></div>
+          <div class="chips"><span class="chip">Tableau</span><span class="chip">SQL</span><span class="chip">KPI</span></div>
         </article>
 
         <article class="card">
           <div style="display:flex;justify-content:space-between;align-items:center"><h3>Airline Delay Analysis</h3><span class="tag">SQL / Python</span></div>
-          <p>Analyzed flight delays by carrier and airport; ranked on-time performance and built a monthly ops summary.</p>
+          <p>Explored delay causes by carrier and airport with SQL and pandas. Produced a monthly performance summary.</p>
           <ul>
-            <li><strong>Skills:</strong> SQL window functions, CTEs, pandas EDA</li>
-            <li><strong>Insight:</strong> Weather explains a large share of winter delays in the Northeast</li>
+            <li><strong>Skills:</strong> SQL (CTEs, window functions), pandas, visualization</li>
+            <li><strong>Insight:</strong> Weather drives ~40% of winter delays in the Northeast</li>
           </ul>
           <div class="project-actions">
-            <a class="btn" href="https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp" target="_blank" rel="noopener">Preview</a>
+            <a class="btn" href="https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp" target="_blank" rel="noopener">Preview Analysis</a>
             <a class="btn secondary" href="https://www.transtats.bts.gov/ONTIME/Departures.aspx" target="_blank" rel="noopener">US BTS Data</a>
             <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">SQL/Python Repo</a>
           </div>
@@ -140,22 +86,17 @@
   SELECT carrier, origin, arr_delay
   FROM flights
   WHERE strftime('%m', flight_date) IN ('12','01','02')
-),
-ranked AS (
-  SELECT carrier,
-         AVG(arr_delay) AS avg_delay,
-         RANK() OVER (ORDER BY AVG(arr_delay)) AS ontime_rank
-  FROM winter
-  GROUP BY carrier
 )
-SELECT * FROM ranked LIMIT 10;</code></pre>
+SELECT carrier, AVG(arr_delay) AS avg_delay
+FROM winter
+GROUP BY carrier
+ORDER BY avg_delay;</code></pre>
           </details>
           <details style="margin-top:8px"><summary><strong>Sample pandas</strong></summary>
             <pre><code>import pandas as pd
 df = pd.read_csv('flights.csv', parse_dates=['flight_date'])
 winter = df[df.flight_date.dt.month.isin([12,1,2])]
-summary = (winter.groupby('carrier')['arr_delay']
-                .mean().sort_values())
+summary = winter.groupby('carrier')['arr_delay'].mean().sort_values()
 print(summary.head(10))</code></pre>
           </details>
           <div class="chips"><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">EDA</span></div>
@@ -163,115 +104,30 @@ print(summary.head(10))</code></pre>
 
         <article class="card">
           <div style="display:flex;justify-content:space-between;align-items:center"><h3>Data Cleaning & Automation</h3><span class="tag">Python / ETL</span></div>
-          <p>CSV normalization pipeline with scheduled runs and weekly data-quality snapshots.</p>
+          <p>Automated CSV cleaning pipeline (dates, duplicates, categories). Generated weekly data‑quality snapshots.</p>
           <ul>
             <li><strong>Skills:</strong> pandas, regex, scheduling</li>
             <li><strong>Impact:</strong> Cut manual processing by 70%</li>
           </ul>
           <div class="project-actions">
-            <a class="btn" href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" rel="noopener">Preview</a>
+            <a class="btn" href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" rel="noopener">Preview Report</a>
             <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">Automation Repo</a>
             <a class="btn secondary" href="https://www.kaggle.com/datasets" target="_blank" rel="noopener">Kaggle Sources</a>
           </div>
           <details style="margin-top:12px"><summary><strong>Cleaner Snippet</strong></summary>
             <pre><code>import pandas as pd
-def clean(df):
+
+def clean_csv(path):
+    df = pd.read_csv(path)
     for c in df.columns:
         if 'date' in c.lower():
             df[c] = pd.to_datetime(df[c], errors='coerce')
     for c in df.select_dtypes('object'):
-        df[c] = (df[c].astype(str).str.strip().str.title())
+        df[c] = df[c].astype(str).str.strip().str.title()
     return df.drop_duplicates()</code></pre>
           </details>
           <div class="chips"><span class="chip">Python</span><span class="chip">ETL</span><span class="chip">pandas</span></div>
         </article>
-      </div>
-
-      <div class="overlay" id="tableau-superstore">
-        <div class="modal">
-          <header><strong>Tableau – Live Preview</strong><a class="close-link" href="#close">Close</a></header>
-          <div class="body"><iframe id="frame-tableau" title="Tableau Viz"></iframe></div>
-          <div class="footer">
-            <a id="open-tableau" class="btn" href="#" target="_blank" rel="noopener">Open on Tableau Public</a>
-            <a class="btn secondary" href="#close">Close</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="skills">
-      <h2>Skills</h2>
-      <div class="two-col">
-        <div class="card">
-          <h3>Technical</h3>
-          <div class="chips">
-            <span class="chip">SQL</span><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">Power BI</span>
-            <span class="chip">Tableau</span><span class="chip">Excel</span><span class="chip">Git</span>
-            <span class="chip">Regex</span><span class="chip">DAX</span><span class="chip">PowerQuery</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Methods & Soft Skills</h3>
-          <ul>
-            <li>EDA, data cleaning, feature engineering</li>
-            <li>Storytelling with dashboards and reports</li>
-            <li>Collaboration and version control with Git</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="sources">
-      <h2>Example Sources I Use</h2>
-      <div class="card">
-        <div class="chips">
-          <a class="chip" href="https://www.transtats.bts.gov/ONTIME/Departures.aspx" target="_blank" rel="noopener">US BTS On-Time</a>
-          <a class="chip" href="https://public.tableau.com/app/profile/tableau.public.sample.workbooks/vizzes" target="_blank" rel="noopener">Tableau Public Samples</a>
-          <a class="chip" href="https://www.kaggle.com/datasets" target="_blank" rel="noopener">Kaggle Datasets</a>
-          <a class="chip" href="https://data.world/" target="_blank" rel="noopener">data.world</a>
-          <a class="chip" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="resume">
-      <h2>Resume</h2>
-      <div class="card">
-        <p>Download my CV below.</p>
-        <div class="project-actions">
-          <a class="btn" href="resume/cv.pdf" download>⬇️ Download CV (PDF)</a>
-          <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn secondary" href="mailto:jasonnguyen101191@gmail.com">Email</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <h2>Contact</h2>
-      <div class="card">
-        <p>Email me or use the quick form.</p>
-        <p><strong>Email:</strong> <a href="mailto:jasonnguyen101191@gmail.com">jasonnguyen101191@gmail.com</a></p>
-        <form onsubmit="return sendMail(event)" class="two-col">
-          <div>
-            <label>Name<br/>
-              <input required name="name" placeholder="Your name" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);background:#fff;color:var(--fg)">
-            </label>
-          </div>
-          <div>
-            <label>Email<br/>
-              <input required type="email" name="email" placeholder="email@domain.com" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);background:#fff;color:var(--fg)">
-            </label>
-          </div>
-          <div style="grid-column:1/-1">
-            <label>Message<br/>
-              <textarea required name="message" rows="4" placeholder="Tell me about the role or project..." style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);background:#fff;color:var(--fg)"></textarea>
-            </label>
-          </div>
-          <div>
-            <button class="btn" type="submit">Send</button>
-            <span class="muted" id="formMsg" style="margin-left:10px"></span>
-          </div>
-        </form>
       </div>
     </section>
 
@@ -280,42 +136,6 @@ def clean(df):
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    function sendMail(e){
-      e.preventDefault();
-      const f = e.target;
-      const name = encodeURIComponent(f.name.value.trim());
-      const email = encodeURIComponent(f.email.value.trim());
-      const msg = encodeURIComponent(f.message.value.trim());
-      const body = `Name: ${name}%0AEmail: ${email}%0A%0A${msg}`;
-      const mail = `mailto:jasonnguyen101191@gmail.com?subject=Contact%20from%20Portfolio&body=${body}`;
-      window.location.href = mail;
-      const label = document.getElementById('formMsg');
-      if(label){ label.textContent = 'Opening your email client. Thanks!'; }
-      f.reset();
-      return false;
-    }
-
-    function setFrameFromLink(link){
-      const href = link.getAttribute('href');
-      if(!href || href[0] !== '#') return;
-      const target = document.querySelector(href);
-      const src = link.dataset.src || '';
-      if(!target) return;
-      const frame = target.querySelector('iframe');
-      const external = target.querySelector('.footer a.btn');
-      if(frame && src){ frame.removeAttribute('src'); setTimeout(()=>{ frame.src = src; }, 0); }
-      if(external && src) external.href = src;
-    }
-
-    document.addEventListener('click', (e) => {
-      const a = e.target.closest('a[data-src]');
-      if(a) setFrameFromLink(a);
-    });
-
-    window.addEventListener('hashchange', () => {
-      const a = document.querySelector(`a[data-src][href="${location.hash}"]`);
-      if(a) setFrameFromLink(a);
-    });
   </script>
 </body>
 </html>
