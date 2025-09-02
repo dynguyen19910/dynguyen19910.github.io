@@ -35,15 +35,19 @@
     .btn.secondary{background:transparent;border:1px solid var(--border);color:var(--fg);box-shadow:none}
     h1{font-weight:900;letter-spacing:.2px}
     .hero{position:relative;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(8px);border-radius:22px;box-shadow:var(--shadow);padding:34px;overflow:hidden}
-    .hero::after{content:"";position:absolute;inset:auto -40px -40px -40px;height:220px;
-      background:radial-gradient(closest-side,rgba(0,212,255,.18),transparent 70%);filter:blur(14px)}
+    .hero::after{content:"";position:absolute;inset:auto -40px -40px -40px;height:220px;background:radial-gradient(closest-side,rgba(0,212,255,.18),transparent 70%);filter:blur(14px)}
     .sub{color:var(--muted);font-size:18px;margin-top:8px}
     .stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
     .stat{background:var(--glass);backdrop-filter:blur(6px);border:1px solid var(--border);padding:14px 16px;border-radius:14px;min-width:180px;box-shadow:var(--shadow-sm)}
-    .kpi{display:flex;gap:10px;align-items:center} .kpi b{font-size:20px}
-    .section{padding:40px 0} .section h2{font-size:32px;margin:0 0 14px}
-    .grid{display:grid;gap:20px} .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    @media (max-width:820px){.grid.cols-3{grid-template-columns:1fr}}
+    .kpi{display:flex;gap:10px;align-items:center}
+    .kpi b{font-size:20px}
+    .section{padding:40px 0}
+    .section h2{font-size:32px;margin:0 0 14px}
+    .grid{display:grid;gap:20px}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:900px){.grid.cols-3{grid-template-columns:1fr 1fr}}
+    @media (max-width:700px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
     .card{background:var(--glass);backdrop-filter:blur(8px);border:1px solid var(--border);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .25s, box-shadow .25s}
     .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
     .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
@@ -62,6 +66,11 @@
     .tbl th{background:rgba(255,255,255,.05)}
     .twocol{display:flex;gap:20px;flex-wrap:wrap}
     .col{flex:1;min-width:280px}
+    .skills-ring{display:flex;gap:20px;flex-wrap:wrap}
+    .ring{background:var(--glass);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow-sm);padding:16px;display:flex;align-items:center;gap:16px;min-width:280px}
+    .ring canvas{width:110px;height:110px}
+    .ring h4{margin:0}
+    .ring p{margin:4px 0 0;color:var(--muted)}
     footer{margin:44px 0 16px;color:var(--muted);text-align:center}
     pre{background:#0b0e14;color:#e9eefc;border-radius:12px;padding:14px;overflow:auto;font-size:13px;border:1px solid var(--border)}
     code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
@@ -90,6 +99,26 @@
         <div class="stat"><div class="kpi"><b>12+</b> dashboards</div><div class="muted">Power BI · Tableau</div></div>
         <div class="stat"><div class="kpi"><b>7</b> end-to-end projects</div><div class="muted">ETL · SQL · EDA</div></div>
         <div class="stat"><div class="kpi"><b>4</b> case studies</div><div class="muted">Business Impact</div></div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <h2>Skills</h2>
+      <div class="skills-ring">
+        <div class="ring">
+          <canvas id="ringTableau"></canvas>
+          <div>
+            <h4>Tableau</h4>
+            <p>Dashboarding, KPI design, storytelling</p>
+          </div>
+        </div>
+        <div class="ring">
+          <canvas id="ringSQL"></canvas>
+          <div>
+            <h4>SQL</h4>
+            <p>CTEs, window functions, modeling</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -246,6 +275,7 @@ def clean(df):
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     document.getElementById('year').textContent=new Date().getFullYear();
+
     function sendMail(e){
       e.preventDefault();
       const f=e.target, n=encodeURIComponent(f.name.value.trim()),
@@ -256,6 +286,15 @@ def clean(df):
       f.reset(); return false;
     }
 
+    function ringChart(el, pct){
+      const ctx=document.getElementById(el);
+      new Chart(ctx,{type:'doughnut',
+        data:{labels:['Proficiency',''],
+          datasets:[{data:[pct,100-pct]}]},
+        options:{cutout:'70%', plugins:{legend:{display:false},tooltip:{enabled:false}}}
+      });
+    }
+
     function initEcom(){
       const ctx=document.getElementById('ecomChart');
       new Chart(ctx,{type:'bar',
@@ -264,10 +303,7 @@ def clean(df):
             {label:'Revenue ($k)', data:[120,95,155], borderWidth:1},
             {label:'Profit ($k)',  data:[8,11,23], type:'line', tension:.35, borderWidth:2, pointRadius:3}
           ]},
-        options:{responsive:true, maintainAspectRatio:false,
-          plugins:{legend:{position:'top'}},
-          scales:{y:{beginAtZero:true}}
-        }
+        options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top'}}, scales:{y:{beginAtZero:true}}}
       });
     }
 
@@ -288,16 +324,20 @@ def clean(df):
     }
 
     const rawRows=[
-      {order_id:'CA-2017-152156', order_date:'08/11/2017', category:'furniture ', customer:'   maria anderson'},
-      {order_id:'CA-2017-152156', order_date:'08/11/2017', category:'furniture ', customer:'   maria anderson'},
-      {order_id:'TX-2016-100111', order_date:'2016/3/2',   category:'OFFICE supplies', customer:"john  O'neil"},
-      {order_id:'WA-2019-502210', order_date:'2019-07-14', category:'technology', customer:'le  anh  '}
+      {order_id:'CA-2017-152156', order_date:'08/11/2017', category:'furniture ', customer:'   maria anderson', amount:'$1,250.00 '},
+      {order_id:'CA-2017-152156', order_date:'08/11/2017', category:'furniture ', customer:'   maria anderson', amount:'$1,250.00 '},
+      {order_id:'TX-2016-100111', order_date:'2016/3/2',   category:'OFFICE supplies', customer:"john  O'neil", amount:' 320.5'},
+      {order_id:'WA-2019-502210', order_date:'2019-07-14', category:'technology', customer:'le  anh  ', amount:'$2,010'}
     ];
-    function renderTable(el, rows){
+    function formatUSD(n){if(n===null||n===undefined||n==='')return '';return '$'+Number(n).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});}
+    function renderTable(el, rows, formatMoney=false){
       if(!rows.length){el.innerHTML='';return}
       const cols=Object.keys(rows[0]);
       el.innerHTML='<tr>'+cols.map(c=>`<th>${c}</th>`).join('')+'</tr>'+
-                   rows.map(r=>'<tr>'+cols.map(c=>`<td>${r[c]}</td>`).join('')+'</tr>').join('');
+        rows.map(r=>'<tr>'+cols.map(c=>{
+          const v=r[c];
+          return `<td>${formatMoney&&c==='amount'?formatUSD(v):v}</td>`;
+        }).join('')+'</tr>').join('');
     }
     function cleanRows(){
       const cleaned=[]; const seen=new Set();
@@ -306,7 +346,9 @@ def clean(df):
         const order_date=isNaN(d)?'':d.toISOString().slice(0,10);
         const category=String(r.category).trim().toLowerCase().replace(/\s+/g,' ').replace(/(^|\s)\S/g,m=>m.toUpperCase());
         const customer=String(r.customer).trim().replace(/\s+/g,' ').replace(/(^|\s)\S/g,m=>m.toUpperCase());
-        const row={order_id:r.order_id, order_date, category, customer};
+        const amtNum=parseFloat(String(r.amount).replace(/[^0-9.-]/g,'')); 
+        const amount=isNaN(amtNum)?'':Number(amtNum.toFixed(2));
+        const row={order_id:r.order_id, order_date, category, customer, amount};
         const key=Object.values(row).join('|');
         if(!seen.has(key)){ seen.add(key); cleaned.push(row) }
       }
@@ -314,16 +356,21 @@ def clean(df):
     }
     function initCleaner(){
       renderTable(document.getElementById('rawTbl'), rawRows);
-      renderTable(document.getElementById('cleanTbl'), []);
+      renderTable(document.getElementById('cleanTbl'), [], true);
       document.getElementById('runClean').addEventListener('click',()=>{
         const cleaned=cleanRows();
-        renderTable(document.getElementById('cleanTbl'), cleaned);
+        renderTable(document.getElementById('cleanTbl'), cleaned, true);
       });
     }
 
-    const inited={e:false,air:false,cl:false};
+    const inited={e:false,air:false,cl:false,skills:false};
     function maybeInit(){
       const h=location.hash;
+      if(!inited.skills){
+        ringChart('ringTableau', 92);
+        ringChart('ringSQL', 95);
+        inited.skills=true;
+      }
       if(h==='#demo-ecom' && !inited.e){initEcom(); inited.e=true}
       if(h==='#demo-air'  && !inited.air){initAirTable(); inited.air=true}
       if(h==='#demo-clean'&& !inited.cl){initCleaner(); inited.cl=true}
