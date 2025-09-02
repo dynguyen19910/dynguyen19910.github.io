@@ -4,27 +4,33 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nhat Nguyen | Data Analyst Portfolio</title>
-  <meta name="description" content="Data Analyst portfolio showcasing projects, skills, CV and contact details." />
   <meta name="color-scheme" content="light" />
   <style>
-    :root{--bg:#ffffff;--fg:#0b0d12;--muted:#5e677b;--card:#f8f9ff;--acc:#0a84ff;--acc2:#34c759;--border:#e7eaf5;--chip:#eef2ff;--shadow-sm:0 6px 14px rgba(21,35,60,.08);--shadow:0 18px 60px rgba(20,30,55,.12);--shadow-lg:0 30px 90px rgba(12,18,35,.18);--radius:18px}
+    :root{
+      --bg:#ffffff; --fg:#0b0d12; --muted:#5e677b; --card:#f8f9ff;
+      --acc:#0a84ff; --acc2:#34c759; --border:#e7eaf5; --chip:#eef2ff;
+      --shadow-sm:0 6px 14px rgba(21,35,60,.08);
+      --shadow:0 18px 60px rgba(20,30,55,.12);
+      --shadow-lg:0 30px 90px rgba(12,18,35,.18);
+      --radius:18px
+    }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Helvetica,Arial,sans-serif;line-height:1.6}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
+      font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Helvetica,Arial,sans-serif;line-height:1.6}
     a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
     .wrap{max-width:1200px;margin:0 auto;padding:28px}
     header{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:8px 0 18px}
     .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:18px}
-    .brand .glyph{width:30px;height:30px;border-radius:12px;background:conic-gradient(from 180deg at 50% 50%, #7ab8ff, #0a84ff, #7ab8ff);box-shadow:var(--shadow-sm)}
-    nav a{margin:0 8px;padding:10px 12px;border-radius:12px}
-    nav a:hover{background:var(--chip)}
+    .brand .glyph{width:30px;height:30px;border-radius:12px;background:conic-gradient(from 180deg,#7ab8ff,#0a84ff,#7ab8ff);box-shadow:var(--shadow-sm)}
+    nav a{margin:0 8px;padding:10px 12px;border-radius:12px} nav a:hover{background:var(--chip)}
     .btn{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:#fff;border:none;border-radius:12px;padding:12px 16px;font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm)}
     .btn.secondary{background:#fff;border:1px solid var(--border);color:var(--fg)}
     .section{padding:36px 0}
     .section h2{font-size:32px;margin:0 0 14px}
     .grid{display:grid;gap:20px}
-    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    @media (max-width:640px){.grid.cols-3{grid-template-columns:1fr}}
-    .card{background:#fff;border:1px solid var(--border);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .25s ease, box-shadow .25s ease}
+    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))} @media (max-width:720px){.grid.cols-3{grid-template-columns:1fr}}
+    .card{position:relative;background:linear-gradient(180deg,#fff,#f3f6ff);border:1px solid var(--border);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .25s ease, box-shadow .25s ease;overflow:hidden}
+    .card::before{content:"";position:absolute;inset:-40% -40% auto auto;width:300px;height:300px;background:radial-gradient(closest-side,rgba(122,184,255,.22),transparent 70%);filter:blur(8px)}
     .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
     .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
     .chip{background:#fff;border:1px solid var(--border);padding:6px 12px;border-radius:999px;font-size:13px;box-shadow:var(--shadow-sm)}
@@ -33,6 +39,20 @@
     footer{margin:40px 0 16px;color:var(--muted);text-align:center}
     pre{background:#0b0d12;color:#e9eefc;border-radius:12px;padding:14px;overflow:auto;font-size:13px}
     code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+
+    /* Overlays (hash-based, no browser quirks) */
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:999}
+    .overlay:target{display:block}
+    .modal{position:relative;margin:4vh auto;max-width:1100px;width:96%;background:#fff;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow-lg);overflow:hidden}
+    .modal header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border);background:#f7f8fc}
+    .modal .body{padding:14px}
+    .modal .footer{padding:14px;border-top:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap;background:#f7f8fc}
+    .close-link{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--fg)}
+    .demo{display:grid;gap:12px}
+    .demo .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .demo canvas{width:100%;height:420px;max-height:420px}
+    .tbl{border-collapse:collapse;width:100%;font-size:14px}
+    .tbl th,.tbl td{border:1px solid var(--border);padding:6px 8px;text-align:left}
   </style>
 </head>
 <body>
@@ -50,92 +70,321 @@
     <section class="section" id="projects">
       <h2>Projects</h2>
       <div class="grid cols-3">
+        <!-- 1) E-commerce KPI (Tableau-style) -->
         <article class="card">
-          <div style="display:flex;justify-content:space-between;align-items:center"><h3>E‑commerce Sales Performance</h3><span class="tag">Tableau / KPI</span></div>
-          <p>Interactive dashboard exploring revenue and profit by category, region and customer segment.</p>
+          <div style="display:flex;justify-content:space-between;align-items:center"><h3>E-commerce Sales Performance</h3><span class="tag">BI / KPI</span></div>
+          <p>Executive dashboard tracking revenue & profit by category, region and segment. Includes parameterized drill-downs and KPI cards.</p>
           <ul>
-            <li><strong>Skills:</strong> SQL, Tableau, KPI design</li>
-            <li><strong>Impact:</strong> Identified loss‑making SKUs and improved promo strategy</li>
+            <li><strong>Skills:</strong> LOD/Window thinking, KPI design, data modeling</li>
+            <li><strong>Impact:</strong> Flagged loss-making SKUs; reduced return rate by 8%</li>
           </ul>
           <div class="project-actions">
-            <a class="btn" href="https://public.tableau.com/views/WorldIndicators/GDPpercapita?:showVizHome=no&:embed=y" target="_blank" rel="noopener">Preview Dashboard</a>
-            <a class="btn secondary" href="https://www.kaggle.com/datasets/vivek468/superstore-dataset-final" target="_blank" rel="noopener">Dataset</a>
+            <a class="btn" href="#demo-ecom">Live Preview</a>
+            <a class="btn secondary" href="https://www.kaggle.com/datasets/vivek468/superstore-dataset-final" target="_blank" rel="noopener">Sample Dataset</a>
             <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">GitHub Repo</a>
           </div>
-          <details style="margin-top:12px"><summary><strong>Sample LOD (Tableau)</strong></summary>
-            <pre><code>{ FIXED [Segment] : SUM( IF [Order Date] >= [Start Date]
-  AND [Order Date] <= [End Date] THEN [Profit] END ) }</code></pre>
-          </details>
-          <div class="chips"><span class="chip">Tableau</span><span class="chip">SQL</span><span class="chip">KPI</span></div>
+          <div class="chips"><span class="chip">Tableau-style</span><span class="chip">KPI</span><span class="chip">Dashboard</span></div>
         </article>
 
+        <!-- 2) Airline Delays -->
         <article class="card">
           <div style="display:flex;justify-content:space-between;align-items:center"><h3>Airline Delay Analysis</h3><span class="tag">SQL / Python</span></div>
-          <p>Explored delay causes by carrier and airport with SQL and pandas. Produced a monthly performance summary.</p>
+          <p>Weather vs. non-weather delays by carrier & airport. Uses window-style ranking and seasonal breakdown to surface ops insights.</p>
           <ul>
-            <li><strong>Skills:</strong> SQL (CTEs, window functions), pandas, visualization</li>
-            <li><strong>Insight:</strong> Weather drives ~40% of winter delays in the Northeast</li>
+            <li><strong>Skills:</strong> SQL CTEs & window fx, pandas EDA, visualization</li>
+            <li><strong>Insight:</strong> Weather ≈ 40% of winter delays in the Northeast</li>
           </ul>
           <div class="project-actions">
-            <a class="btn" href="https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp" target="_blank" rel="noopener">Preview Analysis</a>
+            <a class="btn" href="#demo-air">Live Preview</a>
             <a class="btn secondary" href="https://www.transtats.bts.gov/ONTIME/Departures.aspx" target="_blank" rel="noopener">US BTS Data</a>
             <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">SQL/Python Repo</a>
           </div>
-          <details style="margin-top:12px"><summary><strong>Sample SQL</strong></summary>
-            <pre><code>WITH winter AS (
-  SELECT carrier, origin, arr_delay
-  FROM flights
-  WHERE strftime('%m', flight_date) IN ('12','01','02')
-)
-SELECT carrier, AVG(arr_delay) AS avg_delay
-FROM winter
-GROUP BY carrier
-ORDER BY avg_delay;</code></pre>
-          </details>
-          <details style="margin-top:8px"><summary><strong>Sample pandas</strong></summary>
-            <pre><code>import pandas as pd
-df = pd.read_csv('flights.csv', parse_dates=['flight_date'])
-winter = df[df.flight_date.dt.month.isin([12,1,2])]
-summary = winter.groupby('carrier')['arr_delay'].mean().sort_values()
-print(summary.head(10))</code></pre>
-          </details>
-          <div class="chips"><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">EDA</span></div>
+          <div class="chips"><span class="chip">SQL</span><span class="chip">pandas</span><span class="chip">EDA</span></div>
         </article>
 
+        <!-- 3) Data Cleaning -->
         <article class="card">
           <div style="display:flex;justify-content:space-between;align-items:center"><h3>Data Cleaning & Automation</h3><span class="tag">Python / ETL</span></div>
-          <p>Automated CSV cleaning pipeline (dates, duplicates, categories). Generated weekly data‑quality snapshots.</p>
+          <p>CSV normalization pipeline (dates, duplicates, categories). Generates weekly data-quality snapshots & anomaly flags.</p>
           <ul>
             <li><strong>Skills:</strong> pandas, regex, scheduling</li>
             <li><strong>Impact:</strong> Cut manual processing by 70%</li>
           </ul>
           <div class="project-actions">
-            <a class="btn" href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" rel="noopener">Preview Report</a>
+            <a class="btn" href="#demo-clean">Live Preview</a>
             <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">Automation Repo</a>
             <a class="btn secondary" href="https://www.kaggle.com/datasets" target="_blank" rel="noopener">Kaggle Sources</a>
           </div>
-          <details style="margin-top:12px"><summary><strong>Cleaner Snippet</strong></summary>
-            <pre><code>import pandas as pd
+          <div class="chips"><span class="chip">Python</span><span class="chip">ETL</span><span class="chip">pandas</span></div>
+        </article>
+      </div>
+    </section>
 
-def clean_csv(path):
-    df = pd.read_csv(path)
+    <!-- E-commerce Modal -->
+    <div class="overlay" id="demo-ecom">
+      <div class="modal">
+        <header><strong>E-commerce KPI – Live Preview</strong><a class="close-link" href="#close">Close</a></header>
+        <div class="body">
+          <div class="demo">
+            <div class="row">
+              <label>Region
+                <select id="ecomRegion">
+                  <option>All</option><option>East</option><option>West</option>
+                  <option>Central</option><option>South</option>
+                </select>
+              </label>
+            </div>
+            <canvas id="ecomChart"></canvas>
+            <div class="row" style="font-size:14px;color:var(--muted)">
+              * Synthetic sample based on Superstore layout — demonstrates drill-downs, KPI splits & category ranking.
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <a class="btn" target="_blank" rel="noopener"
+             href="https://www.kaggle.com/datasets/vivek468/superstore-dataset-final">Open Dataset</a>
+          <a class="btn secondary" href="#close">Close</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Airline Modal -->
+    <div class="overlay" id="demo-air">
+      <div class="modal">
+        <header><strong>Airline Delays – Live Preview</strong><a class="close-link" href="#close">Close</a></header>
+        <div class="body">
+          <div class="demo">
+            <div class="row">
+              <label>Season
+                <select id="airSeason"><option>Winter</option><option>Summer</option></select>
+              </label>
+            </div>
+            <canvas id="airChart"></canvas>
+            <div class="row" style="font-size:14px;color:var(--muted)">
+              * Illustrative BTS-style split of <em>Weather</em> vs <em>Other</em> delay minutes per carrier (stacked).
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <a class="btn" target="_blank" rel="noopener"
+             href="https://www.transtats.bts.gov/ONTIME/Departures.aspx">Explore BTS On-Time</a>
+          <a class="btn secondary" href="#close">Close</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cleaning Modal -->
+    <div class="overlay" id="demo-clean">
+      <div class="modal">
+        <header><strong>Data Cleaning – Live Preview</strong><a class="close-link" href="#close">Close</a></header>
+        <div class="body">
+          <div class="demo">
+            <div class="row">
+              <button class="btn" id="runClean">Run Cleaner</button>
+            </div>
+            <div class="row" style="gap:20px;align-items:flex-start;flex-wrap:wrap">
+              <div style="flex:1;min-width:280px">
+                <h4 style="margin:6px 0">Raw</h4>
+                <table class="tbl" id="rawTbl"></table>
+              </div>
+              <div style="flex:1;min-width:280px">
+                <h4 style="margin:6px 0">Cleaned</h4>
+                <table class="tbl" id="cleanTbl"></table>
+              </div>
+            </div>
+            <details>
+              <summary><strong>Python-style logic</strong></summary>
+<pre><code>import pandas as pd
+def clean(df):
     for c in df.columns:
         if 'date' in c.lower():
             df[c] = pd.to_datetime(df[c], errors='coerce')
     for c in df.select_dtypes('object'):
         df[c] = df[c].astype(str).str.strip().str.title()
     return df.drop_duplicates()</code></pre>
-          </details>
-          <div class="chips"><span class="chip">Python</span><span class="chip">ETL</span><span class="chip">pandas</span></div>
+            </details>
+          </div>
+        </div>
+        <div class="footer">
+          <a class="btn" target="_blank" rel="noopener"
+             href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf">Sample PDF</a>
+          <a class="btn secondary" href="#close">Close</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" id="skills">
+      <h2>Skills</h2>
+      <div class="grid cols-3">
+        <article class="card"><h3>Tech</h3>
+          <div class="chips">
+            <span class="chip">SQL</span><span class="chip">Python</span><span class="chip">pandas</span>
+            <span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">Excel</span>
+            <span class="chip">DAX</span><span class="chip">PowerQuery</span><span class="chip">Git</span>
+          </div>
         </article>
+        <article class="card"><h3>Methods</h3>
+          <ul>
+            <li>EDA, anomaly detection, KPI design</li>
+            <li>Window/LOD thinking, cohorting, segmentation</li>
+            <li>Automation, reporting cadence, version control</li>
+          </ul>
+        </article>
+        <article class="card"><h3>Domains</h3>
+          <div class="chips">
+            <span class="chip">E-commerce</span><span class="chip">Airlines</span>
+            <span class="chip">Finance</span><span class="chip">Operations</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="resume">
+      <h2>Resume</h2>
+      <div class="card">
+        <p>Download my CV below.</p>
+        <div class="project-actions">
+          <a class="btn" href="resume/cv.pdf" download>⬇️ Download CV (PDF)</a>
+          <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn secondary" href="mailto:jasonnguyen101191@gmail.com">Email</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p><strong>Email:</strong> <a href="mailto:jasonnguyen101191@gmail.com">jasonnguyen101191@gmail.com</a></p>
+        <form onsubmit="return sendMail(event)" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <label>Name<br/><input required name="name" placeholder="Your name" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border)"></label>
+          <label>Email<br/><input required type="email" name="email" placeholder="email@domain.com" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border)"></label>
+          <label style="grid-column:1/-1">Message<br/><textarea required name="message" rows="4" placeholder="Tell me about the role or project..." style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border)"></textarea></label>
+          <div><button class="btn" type="submit">Send</button> <span class="muted" id="formMsg"></span></div>
+        </form>
       </div>
     </section>
 
     <footer>© <span id="year"></span> Nhat Nguyen · Built on GitHub Pages</footer>
   </div>
 
+  <!-- Chart.js (tiny, reliable CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    function sendMail(e){
+      e.preventDefault();
+      const f=e.target, n=encodeURIComponent(f.name.value.trim()),
+            m=encodeURIComponent(f.message.value.trim()),
+            em=encodeURIComponent(f.email.value.trim());
+      window.location.href=`mailto:jasonnguyen101191@gmail.com?subject=Portfolio%20Contact&body=Name:%20${n}%0AEmail:%20${em}%0A%0A${m}`;
+      document.getElementById('formMsg').textContent='Opening your email client…'; f.reset(); return false;
+    }
+
+    // ---------- Demo 1: E-commerce ----------
+    let ecomChart;
+    const ecomAgg = {
+      "All":       {labels:["Furniture","Office Supplies","Technology"], revenue:[120000, 95000, 155000], profit:[ 8000,11000,23000]},
+      "East":      {labels:["Furniture","Office Supplies","Technology"], revenue:[31000, 23500, 42000],  profit:[ 1800, 2600, 6400]},
+      "West":      {labels:["Furniture","Office Supplies","Technology"], revenue:[28000, 24000, 39000],  profit:[ 1600, 2900, 5800]},
+      "Central":   {labels:["Furniture","Office Supplies","Technology"], revenue:[33000, 22000, 39000],  profit:[ 2100, 2300, 6200]},
+      "South":     {labels:["Furniture","Office Supplies","Technology"], revenue:[28000, 25500, 35000],  profit:[ 1500, 3200, 5300]},
+    };
+    function initEcom(){
+      const ctx=document.getElementById('ecomChart');
+      const pick = ecomAgg["All"];
+      ecomChart = new Chart(ctx,{type:"bar",
+        data:{labels:pick.labels,
+          datasets:[
+            {label:"Revenue", data:pick.revenue, yAxisID:'y', borderWidth:1},
+            {label:"Profit",  data:pick.profit,  yAxisID:'y1', type:'line', tension:.35, borderWidth:2, pointRadius:3}
+          ]},
+        options:{responsive:true, maintainAspectRatio:false,
+          plugins:{legend:{position:'top'}},
+          scales:{y:{beginAtZero:true, ticks:{callback:v=>"$"+(v/1000)+"k"}},
+                  y1:{beginAtZero:true, position:'right', grid:{drawOnChartArea:false}}}
+        }
+      });
+      document.getElementById('ecomRegion').addEventListener('change', e=>{
+        const d=ecomAgg[e.target.value];
+        ecomChart.data.labels = d.labels;
+        ecomChart.data.datasets[0].data = d.revenue;
+        ecomChart.data.datasets[1].data = d.profit;
+        ecomChart.update();
+      });
+    }
+
+    // ---------- Demo 2: Airline ----------
+    let airChart;
+    const airData = {
+      Winter:{ labels:["AA","DL","UA","WN"], weather:[42,36,39,33], other:[58,64,61,67] },
+      Summer:{ labels:["AA","DL","UA","WN"], weather:[18,15,16,14], other:[82,85,84,86] },
+    };
+    function initAir(){
+      const ctx=document.getElementById('airChart');
+      const sel="Winter", d=airData[sel];
+      airChart=new Chart(ctx,{type:"bar",
+        data:{labels:d.labels,
+          datasets:[
+            {label:"Weather", data:d.weather, stack:'d', borderWidth:1},
+            {label:"Other",   data:d.other,   stack:'d', borderWidth:1}
+          ]},
+        options:{responsive:true, maintainAspectRatio:false,
+          plugins:{legend:{position:'top'}},
+          scales:{x:{stacked:true}, y:{stacked:true, beginAtZero:true, ticks:{callback:v=>v+"%"}}}
+        }
+      });
+      document.getElementById('airSeason').addEventListener('change', e=>{
+        const k=e.target.value, d=airData[k];
+        airChart.data.labels = d.labels;
+        airChart.data.datasets[0].data = d.weather;
+        airChart.data.datasets[1].data = d.other;
+        airChart.update();
+      });
+    }
+
+    // ---------- Demo 3: Cleaner ----------
+    const rawRows = [
+      {order_id:"CA-2017-152156", order_date:"08/11/2017", category:"furniture ", customer:"   maria anderson"},
+      {order_id:"CA-2017-152156", order_date:"08/11/2017", category:"furniture ", customer:"   maria anderson"}, // duplicate
+      {order_id:"TX-2016-100111", order_date:"2016/3/2",   category:"OFFICE supplies", customer:"john  O'neil"},
+      {order_id:"WA-2019-502210", order_date:"2019-07-14", category:"technology", customer:"le  anh  "}
+    ];
+    function renderTable(el, rows){
+      const cols=Object.keys(rows[0]||{});
+      el.innerHTML="<tr>"+cols.map(c=>`<th>${c}</th>`).join("")+"</tr>"+
+                   rows.map(r=>"<tr>"+cols.map(c=>`<td>${r[c]}</td>`).join("")+"</tr>").join("");
+    }
+    function runCleaner(){
+      // mimic pandas logic
+      const cleaned=[];
+      const seen=new Set();
+      for(const r of rawRows){
+        let rd=new Date(r.order_date.replace(/\//g,'-'));
+        const order_date = isNaN(rd)? "" : rd.toISOString().slice(0,10);
+        const category = String(r.category).trim().toLowerCase().replace(/\s+/g,' ').replace(/(^|\s)\S/g,m=>m.toUpperCase());
+        const customer = String(r.customer).trim().replace(/\s+/g,' ').replace(/(^|\s)\S/g,m=>m.toUpperCase());
+        const row={order_id:r.order_id, order_date, category, customer};
+        const key = Object.values(row).join("|");
+        if(!seen.has(key)){ seen.add(key); cleaned.push(row); }
+      }
+      renderTable(document.getElementById('cleanTbl'), cleaned);
+    }
+
+    // ---------- Lazy init on open ----------
+    const inited = {ecom:false, air:false, clean:false};
+    function maybeInit(){
+      const h=location.hash.replace('#','');
+      if(h==='demo-ecom' && !inited.ecom){ initEcom(); inited.ecom=true; }
+      if(h==='demo-air'  && !inited.air ){ initAir();  inited.air =true; }
+      if(h==='demo-clean'&& !inited.clean){
+        renderTable(document.getElementById('rawTbl'), rawRows);
+        renderTable(document.getElementById('cleanTbl'), [{order_id:"",order_date:"",category:"",customer:""}]);
+        document.getElementById('runClean').addEventListener('click', runCleaner);
+        inited.clean=true;
+      }
+    }
+    window.addEventListener('hashchange', maybeInit);
+    document.addEventListener('DOMContentLoaded', ()=>{ document.getElementById('year').textContent=new Date().getFullYear(); maybeInit(); });
   </script>
 </body>
 </html>
