@@ -7,57 +7,61 @@
   <meta name="description" content="Data Analyst portfolio showcasing projects, skills, CV and contact details." />
   <meta name="color-scheme" content="light" />
   <style>
-    :root{--bg:#ffffff;--fg:#0b0d12;--muted:#5e677b;--card:#f7f8fc;--acc:#0a84ff;--acc2:#34c759;--border:#e8eaf2;--chip:#eef2ff;--shadow:0 10px 30px rgba(20,30,55,.08)}
+    :root{--bg:#ffffff;--fg:#0b0d12;--muted:#5e677b;--card:#f7f8fc;--acc:#0a84ff;--acc2:#34c759;--border:#e8eaf2;--chip:#eef2ff;--shadow:0 18px 60px rgba(20,30,55,.10);--radius:18px}
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;line-height:1.6}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Inter,Helvetica,Arial,sans-serif;line-height:1.6}
     a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
-    .wrap{max-width:1120px;margin:0 auto;padding:28px}
+    .wrap{max-width:1180px;margin:0 auto;padding:28px}
     header{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:8px 0 18px}
     .brand{display:flex;align-items:center;gap:10px;font-weight:700}
-    .brand .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--acc),#7ab8ff)}
+    .brand .glyph{width:28px;height:28px;border-radius:12px;background:linear-gradient(135deg,var(--acc),#7ab8ff);box-shadow:var(--shadow)}
     nav a{margin:0 8px;padding:10px 12px;border-radius:12px}
     nav a:hover{background:var(--chip)}
     .btn{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:#fff;border:none;border-radius:12px;padding:12px 16px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
     .btn.secondary{background:#fff;border:1px solid var(--border);color:var(--fg)}
-    .hero{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:34px;border:1px solid var(--border);border-radius:18px;background:linear-gradient(180deg,#f6fbff,transparent)}
-    .flare{position:absolute;inset:-1px -1px auto auto;width:200px;height:200px;background:radial-gradient(closest-side,rgba(10,132,255,.15),transparent 70%);filter:blur(6px)}
+    .hero{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:34px;border:1px solid var(--border);border-radius:var(--radius);background:linear-gradient(180deg,#f6fbff,transparent)}
+    .flare{position:absolute;inset:-1px -1px auto auto;width:220px;height:220px;background:radial-gradient(closest-side,rgba(10,132,255,.16),transparent 70%);filter:blur(6px)}
     .hero h1{font-size:clamp(32px,4vw,52px);line-height:1.15;margin:0 0 12px}
     .hero p{margin:0 0 18px;color:var(--muted);font-size:18px}
     .stats{display:flex;gap:14px;flex-wrap:wrap}
-    .stat{background:#fff;border:1px solid var(--border);padding:14px 16px;border-radius:14px;min-width:180px;box-shadow:var(--shadow)}
+    .stat{background:#fff;border:1px solid var(--border);padding:14px 16px;border-radius:14px;min-width:190px;box-shadow:var(--shadow)}
     .kpi{display:flex;gap:10px;align-items:center}
     .kpi b{font-size:20px}
     .section{padding:36px 0}
-    .section h2{font-size:28px;margin:0 0 14px}
+    .section h2{font-size:32px;margin:0 0 14px}
     .grid{display:grid;gap:18px}
     .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
     .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
     @media (max-width:980px){.hero{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:1fr 1fr}}
     @media (max-width:640px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
-    .card{background:linear-gradient(180deg,#ffffff,#f8faff);border:1px solid var(--border);padding:20px;border-radius:16px;box-shadow:var(--shadow)}
+    .card{background:linear-gradient(180deg,#ffffff,#f8faff);border:1px solid var(--border);padding:20px;border-radius:var(--radius);box-shadow:var(--shadow)}
     .card h3{margin:0 0 8px}
     .muted{color:var(--muted)}
     .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .chip{background:#fff;border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:13px;box-shadow:var(--shadow)}
+    .chip{background:#fff;border:1px solid var(--border);padding:6px 12px;border-radius:999px;font-size:13px;box-shadow:var(--shadow)}
     .project-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
     .table{width:100%;border-collapse:collapse;font-size:14px}
     .table th,.table td{border-bottom:1px solid var(--border);padding:10px 8px;text-align:left}
-    .tag{font-size:12px;padding:4px 10px;border-radius:999px;background:#fff;border:1px solid var(--border)}
+    .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:#fff;border:1px solid var(--border)}
     .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     @media (max-width:820px){.two-col{grid-template-columns:1fr}}
     footer{margin:40px 0 16px;color:var(--muted);text-align:center}
-    dialog::backdrop{background:rgba(0,0,0,.55)}
-    dialog{border:1px solid var(--border);border-radius:16px;padding:0;max-width:1024px;width:96%;overflow:hidden;box-shadow:var(--shadow)}
-    dialog header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border);background:#f7f8fc}
-    dialog .body{aspect-ratio:16/9;width:100%;background:#000}
-    dialog .body iframe{width:100%;height:100%;border:0}
-    dialog .footer{padding:12px 16px;display:flex;gap:10px;flex-wrap:wrap;background:#f7f8fc}
+
+    /* Overlays (hash-based, works everywhere) */
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;z-index:999}
+    .overlay:target{display:block}
+    .modal{position:relative;margin:4vh auto;max-width:1100px;width:96%;background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    .modal header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border);background:#f7f8fc}
+    .modal .body{aspect-ratio:16/9;width:100%;background:#000}
+    .modal .body iframe{width:100%;height:100%;border:0}
+    .modal .footer{padding:12px 16px;display:flex;gap:10px;flex-wrap:wrap;background:#f7f8fc}
+    .close-link{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--fg)}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div class="brand"><span class="dot"></span> Nhat Nguyen · Data Analyst</div>
+      <div class="brand"><span class="glyph"></span> Nhat Nguyen · Data Analyst</div>
       <nav>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
@@ -71,7 +75,7 @@
       <div class="flare"></div>
       <div>
         <h1>Turning data into crisp, interactive stories.</h1>
-        <p>I build polished dashboards, automate clean data pipelines, and extract insights with SQL and Python. Browse a few examples below, with embedded previews and real data sources.</p>
+        <p>I build polished dashboards, automate clean data pipelines, and extract insights with SQL and Python. Browse embedded previews and real data sources below.</p>
         <div class="stats">
           <div class="stat"><div class="kpi"><b>12+</b> dashboards</div><div class="muted">Power BI · Tableau</div></div>
           <div class="stat"><div class="kpi"><b>7</b> end‑to‑end projects</div><div class="muted">ETL · SQL · EDA</div></div>
@@ -104,7 +108,7 @@
             <li><strong>Impact:</strong> Highlighted unprofitable SKUs and reduced return rate 8%</li>
           </ul>
           <div class="project-actions">
-            <button class="btn" data-open="dlg-tableau" data-src="https://public.tableau.com/views/RegionalSampleWorkbook/Storms?:showVizHome=no&:embed=true">Live Preview</button>
+            <a class="btn" href="#tableau-superstore" data-src="https://public.tableau.com/views/RegionalSampleWorkbook/Storms?:showVizHome=no&:embed=true">Live Preview</a>
             <a class="btn secondary" href="https://public.tableau.com/app/profile/tableau.public.sample.workbooks/vizzes" target="_blank" rel="noopener">Tableau Public Samples</a>
             <a class="btn secondary" href="https://www.kaggle.com/datasets/vivek468/superstore-dataset-final" target="_blank" rel="noopener">Sample Dataset</a>
             <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">GitHub Repo</a>
@@ -120,7 +124,7 @@
             <li><strong>Insight:</strong> Weather accounts for ~40% of winter delays in the Northeast</li>
           </ul>
           <div class="project-actions">
-            <button class="btn" data-open="dlg-pbi" data-src="https://app.powerbi.com/view?r=eyJrIjoiZTA4MmI5M2QtMjNjNy00MjhiLTgxN2MtY2I0N2NkNzA0OGQ3IiwidCI6IjVjYjVlZDUzLTNkNDAtNDlmOS04Y2VjLWQyY2Y2MmZkYmQ3ZSIsImMiOjF9">Live Preview</button>
+            <a class="btn" href="#pbi-airline" data-src="https://app.powerbi.com/view?r=eyJrIjoiZTA4MmI5M2QtMjNjNy00MjhiLTgxN2MtY2I0N2NkNzA0OGQ3IiwidCI6IjVjYjVlZDUzLTNkNDAtNDlmOS04Y2VjLWQyY2Y2MmZkYmQ3ZSIsImMiOjF9">Live Preview</a>
             <a class="btn secondary" href="https://www.transtats.bts.gov/ONTIME/Departures.aspx" target="_blank" rel="noopener">US BTS On‑Time Data</a>
             <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">SQL/Python Repo</a>
           </div>
@@ -135,7 +139,7 @@
             <li><strong>Impact:</strong> Cut manual processing by 70%</li>
           </ul>
           <div class="project-actions">
-            <button class="btn" data-open="dlg-pdf" data-src="resume/sample-report.pdf">Preview Report</button>
+            <a class="btn" href="#dq-report" data-src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf">Preview Report</a>
             <a class="btn secondary" href="https://github.com/dynguyen19910" target="_blank" rel="noopener">Automation Repo</a>
             <a class="btn secondary" href="https://www.kaggle.com/datasets" target="_blank" rel="noopener">Kaggle Sources</a>
           </div>
@@ -143,23 +147,39 @@
         </article>
       </div>
 
-      <dialog id="dlg-pbi">
-        <header><strong>Airline Delay – Power BI Preview</strong><button class="btn secondary" data-close>Close</button></header>
-        <div class="body"><iframe title="Power BI Report"></iframe></div>
-        <div class="footer"><a class="btn" id="open-pbi" target="_blank" rel="noopener">Open Full Report</a></div>
-      </dialog>
+      <!-- Overlays (hash + JS populates iframe src) -->
+      <div class="overlay" id="pbi-airline">
+        <div class="modal">
+          <header><strong>Airline Delay – Power BI Preview</strong><a class="close-link" href="#close">Close</a></header>
+          <div class="body"><iframe id="frame-pbi" title="Power BI Report"></iframe></div>
+          <div class="footer">
+            <a id="open-pbi" class="btn" href="#" target="_blank" rel="noopener">Open Full Report</a>
+            <a class="btn secondary" href="#close">Close</a>
+          </div>
+        </div>
+      </div>
 
-      <dialog id="dlg-tableau">
-        <header><strong>Superstore – Tableau Preview</strong><button class="btn secondary" data-close>Close</button></header>
-        <div class="body"><iframe title="Tableau Viz"></iframe></div>
-        <div class="footer"><a class="btn" id="open-tableau" target="_blank" rel="noopener">Open on Tableau Public</a></div>
-      </dialog>
+      <div class="overlay" id="tableau-superstore">
+        <div class="modal">
+          <header><strong>Superstore – Tableau Preview</strong><a class="close-link" href="#close">Close</a></header>
+          <div class="body"><iframe id="frame-tableau" title="Tableau Viz"></iframe></div>
+          <div class="footer">
+            <a id="open-tableau" class="btn" href="#" target="_blank" rel="noopener">Open on Tableau Public</a>
+            <a class="btn secondary" href="#close">Close</a>
+          </div>
+        </div>
+      </div>
 
-      <dialog id="dlg-pdf">
-        <header><strong>Data Quality – Sample PDF</strong><button class="btn secondary" data-close>Close</button></header>
-        <div class="body"><iframe title="Sample PDF"></iframe></div>
-        <div class="footer"><a class="btn" id="open-pdf" target="_blank" rel="noopener">Open PDF</a></div>
-      </dialog>
+      <div class="overlay" id="dq-report">
+        <div class="modal">
+          <header><strong>Data Quality – Sample PDF</strong><a class="close-link" href="#close">Close</a></header>
+          <div class="body"><iframe id="frame-pdf" title="Sample PDF"></iframe></div>
+          <div class="footer">
+            <a id="open-pdf" class="btn" href="#" target="_blank" rel="noopener">Open PDF</a>
+            <a class="btn secondary" href="#close">Close</a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="section" id="skills">
@@ -258,24 +278,27 @@
       return false;
     }
 
+    // Populate iframe src when opening overlays via hash links
+    function setFrameFromLink(link){
+      const href = link.getAttribute('href');
+      if(!href || href[0] !== '#') return;
+      const target = document.querySelector(href);
+      const src = link.dataset.src || '';
+      if(!target) return;
+      const frame = target.querySelector('iframe');
+      const external = target.querySelector('.footer a.btn');
+      if(frame && src) frame.src = src;
+      if(external && src) external.href = src;
+    }
+
     document.addEventListener('click', (e) => {
-      const openBtn = e.target.closest('[data-open]');
-      if (openBtn) {
-        const id = openBtn.dataset.open;
-        const src = openBtn.dataset.src || '';
-        const dlg = document.getElementById(id);
-        if (dlg) {
-          const iframe = dlg.querySelector('iframe');
-          const link = dlg.querySelector('a.btn');
-          if (iframe && src) iframe.src = src;
-          if (link && src) link.href = src;
-          dlg.showModal();
-        }
-      }
-      if (e.target.matches('[data-close]')) {
-        const dlg = e.target.closest('dialog');
-        if (dlg) dlg.close();
-      }
+      const a = e.target.closest('a[data-src]');
+      if(a) setFrameFromLink(a);
+    });
+
+    window.addEventListener('hashchange', () => {
+      const a = document.querySelector(`a[data-src][href="${location.hash}"]`);
+      if(a) setFrameFromLink(a);
     });
   </script>
 </body>
