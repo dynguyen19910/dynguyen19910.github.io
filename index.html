@@ -7,43 +7,49 @@
   <meta name="color-scheme" content="dark light"/>
   <style>
     :root{
-      --bg1:#0a0f1c; --bg2:#10172a; --fg:#eaf4ff; --muted:#9fb3d1;
-      --primary:#38bdf8; --secondary:#818cf8; --accent:#67e8f9;
-      --border:#1e293b; --glass1:rgba(255,255,255,.06); --glass2:rgba(255,255,255,.02);
-      --shadow-sm:0 6px 14px rgba(0,0,0,.35);
-      --shadow:0 20px 50px rgba(0,0,0,.45);
-      --shadow-lg:0 40px 120px rgba(0,0,0,.6);
+      --bg:#061120; --bg2:#081528; --fg:#eaf4ff; --muted:#9fb3d1;
+      --sapphire:#3abff8; --ice:#a5f3fc; --neon:#67e8f9; --lime:#99f6e4;
+      --border:#18314f; --glass1:rgba(255,255,255,.07); --glass2:rgba(255,255,255,.03);
+      --shadow-sm:0 8px 18px rgba(0,0,0,.35);
+      --shadow:0 22px 60px rgba(0,0,0,.45);
+      --shadow-lg:0 40px 120px rgba(0,0,0,.65);
       --radius:20px
     }
     *{box-sizing:border-box}
     html,body{
       margin:0;padding:0;
-      background:linear-gradient(145deg,var(--bg1),var(--bg2));
+      background:
+        radial-gradient(1000px 500px at 10% -10%, rgba(58,191,248,.16), transparent 60%),
+        radial-gradient(900px 480px at 100% 0%, rgba(103,232,249,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
       color:var(--fg);
       font-family:Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6
     }
-    a{color:var(--primary);text-decoration:none} a:hover{text-decoration:underline}
+    a{color:var(--ice);text-decoration:none} a:hover{text-decoration:underline}
     .wrap{max-width:1200px;margin:0 auto;padding:28px}
-    header{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:12px 0 18px;position:sticky;top:0;z-index:5;background:linear-gradient(180deg,rgba(10,15,28,.95),rgba(10,15,28,.7) 70%,transparent);backdrop-filter:blur(6px)}
+    header{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:12px 0 18px;position:sticky;top:0;z-index:5;background:linear-gradient(180deg,rgba(6,17,32,.9),rgba(6,17,32,.65) 60%,transparent);backdrop-filter:blur(6px)}
     .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:18px}
-    .orb{width:30px;height:30px;border-radius:12px;background:conic-gradient(from 0deg,var(--primary),var(--secondary),var(--accent),var(--primary));box-shadow:0 0 18px rgba(56,189,248,.8);animation:spin 8s linear infinite}
-    @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+    .orb{width:32px;height:32px;border-radius:12px;background:
+      conic-gradient(from 0deg,#34d2ff,#00b7ff,#5bf1ff,#34d2ff);
+      box-shadow:0 0 20px rgba(52,210,255,.8);animation:pulse 3.2s ease-in-out infinite}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
     nav a{margin:0 8px;padding:10px 12px;border-radius:12px} nav a:hover{background:rgba(255,255,255,.06)}
-    .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--primary),var(--accent));color:#00121f;border:none;border-radius:14px;padding:12px 16px;font-weight:700;cursor:pointer;box-shadow:0 0 20px rgba(56,189,248,.35);transition:transform .25s, box-shadow .25s}
-    .btn:hover{transform:translateY(-2px);box-shadow:0 0 32px rgba(56,189,248,.6)}
-    .btn.secondary{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));color:var(--fg);border:1px solid var(--border);box-shadow:none}
-    .hero{position:relative;border:1px solid var(--border);background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(8px);border-radius:24px;box-shadow:var(--shadow);padding:36px;overflow:hidden}
-    h1{font-weight:900;margin:0}
+    .btn{position:relative;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#0ec5ff,#7de3ff);color:#00121f;border:none;border-radius:14px;padding:12px 16px;font-weight:800;cursor:pointer;box-shadow:0 0 22px rgba(14,197,255,.35);transition:transform .25s, box-shadow .25s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(14,197,255,.6)}
+    .btn.secondary{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));color:var(--fg);border:1px solid var(--border);box-shadow:none}
+    .hero{position:relative;border:1px solid var(--border);background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(10px);border-radius:26px;box-shadow:var(--shadow);padding:36px;overflow:hidden}
+    h1{font-weight:900;letter-spacing:.3px;margin:0}
     .sub{color:var(--muted);font-size:18px;margin-top:10px}
     .stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
-    .stat{background:linear-gradient(180deg,var(--glass1),var(--glass2));border:1px solid var(--border);padding:14px 16px;border-radius:16px;min-width:180px;box-shadow:var(--shadow-sm)}
-    .section{padding:40px 0}
+    .stat{position:relative;background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(8px);border:1px solid var(--border);padding:14px 16px;border-radius:16px;min-width:180px;box-shadow:var(--shadow-sm)}
+    .section{padding:42px 0}
     .section h2{font-size:32px;margin:0 0 14px}
     .grid{display:grid;gap:22px}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
     .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
     @media (max-width:900px){.grid.cols-3{grid-template-columns:1fr 1fr}}
-    @media (max-width:700px){.grid.cols-3{grid-template-columns:1fr}}
-    .card{background:linear-gradient(180deg,var(--glass1),var(--glass2));border:1px solid var(--border);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .25s, box-shadow .25s}
+    @media (max-width:700px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
+    .card{position:relative;background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(8px);border:1px solid var(--border);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:transform .25s, box-shadow .25s}
     .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
     .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
     .chip{background:rgba(255,255,255,.06);border:1px solid var(--border);padding:6px 12px;border-radius:999px;font-size:13px}
@@ -51,7 +57,7 @@
     .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--border)}
     .overlay{position:fixed;inset:0;background:rgba(2,8,18,.84);display:none;z-index:20}
     .overlay:target{display:block}
-    .modal{margin:5vh auto;max-width:1120px;width:95%;background:linear-gradient(180deg,var(--glass1),var(--glass2));border:1px solid var(--border);border-radius:22px;box-shadow:var(--shadow-lg);overflow:hidden}
+    .modal{position:relative;margin:5vh auto;max-width:1120px;width:95%;background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:22px;box-shadow:var(--shadow-lg);overflow:hidden}
     .modal header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border)}
     .modal .body{padding:16px}
     .close-link{padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--fg)}
@@ -59,11 +65,17 @@
     .tbl{border-collapse:collapse;width:100%;font-size:14px}
     .tbl th,.tbl td{border:1px solid var(--border);padding:8px 10px;text-align:center}
     .tbl th{background:rgba(255,255,255,.05)}
+    .tbl tr.selected td{background:rgba(58,191,248,.12)}
+    .twocol{display:grid;grid-template-columns:1.6fr .9fr;gap:18px}
+    .side{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;padding:14px}
+    .side h4{margin:0 0 8px}
     .barrow{display:flex;align-items:center;gap:10px;margin:8px 0}
     .barlabel{width:120px}
-    .bar{flex:1;height:10px;border-radius:999px;background:#0d1528;border:1px solid var(--border);overflow:hidden}
-    .bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--accent))}
+    .bar{flex:1;height:10px;border-radius:999px;background:#0b1526;border:1px solid var(--border);overflow:hidden}
+    .bar>span{display:block;height:100%;background:linear-gradient(90deg,#0ec5ff,#7de3ff)}
     footer{margin:44px 0 16px;color:var(--muted);text-align:center}
+    pre{background:#0b0e14;color:#e9eefc;border-radius:12px;padding:14px;overflow:auto;font-size:13px;border:1px solid var(--border)}
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
   </style>
 </head>
 <body>
@@ -78,9 +90,14 @@
       </nav>
     </header>
 
+    <!-- Hero -->
     <section class="hero" id="intro">
       <h1>Data, Signals, and AI-ready Insights</h1>
-      <p class="sub">I’m <strong>Nhat Nguyen</strong>, a data analyst who turns messy datasets into crisp, decision-ready stories. I learn fast, stay curious, and don’t quit when things get tough—every challenge is a chance to build better systems with SQL, Python, and BI.</p>
+      <p class="sub">
+        I’m <strong>Nhat Nguyen</strong>, a data analyst who loves turning messy datasets into crisp, decision-ready stories.
+        I’m energized by new technology and the AI wave—curious, fast-learning, and resilient. Challenges don’t slow me down;
+        they’re chances to build better systems and never give up. I bring that drive to SQL, Python, and BI work every day.
+      </p>
       <div class="stats">
         <div class="stat"><div><b>12+</b> dashboards</div><div style="color:var(--muted)">Power BI · Tableau</div></div>
         <div class="stat"><div><b>7</b> end-to-end projects</div><div style="color:var(--muted)">ETL · SQL · EDA</div></div>
@@ -88,6 +105,7 @@
       </div>
     </section>
 
+    <!-- Skills -->
     <section class="section" id="skills">
       <h2>Skills</h2>
       <div class="card">
@@ -98,12 +116,25 @@
       </div>
     </section>
 
+    <!-- Projects -->
     <section class="section" id="projects">
       <h2>Projects</h2>
       <div class="grid cols-3">
-        <article class="card"><h3>E-commerce Sales Performance</h3><p>KPI dashboard simulating sales by category, region, and segment.</p><div class="project-actions"><a class="btn" href="#demo-ecom">Live Preview</a></div></article>
-        <article class="card"><h3>Airline Delay Analysis</h3><p>Monthly delay percentages by carrier with seasonal insights.</p><div class="project-actions"><a class="btn" href="#demo-air">Live Preview</a></div></article>
-        <article class="card"><h3>Data Cleaning & Automation</h3><p>CSV normalization pipeline with raw vs cleaned preview.</p><div class="project-actions"><a class="btn" href="#demo-clean">Live Preview</a></div></article>
+        <article class="card">
+          <h3>E-commerce Sales Performance</h3>
+          <p>KPI dashboard simulating sales by category, region, and segment.</p>
+          <div class="project-actions"><a class="btn" href="#demo-ecom">Live Preview</a></div>
+        </article>
+        <article class="card">
+          <h3>Airline Delay Analysis</h3>
+          <p>Monthly delay percentages by carrier with seasonal insights.</p>
+          <div class="project-actions"><a class="btn" href="#demo-air">Live Preview</a></div>
+        </article>
+        <article class="card">
+          <h3>Data Cleaning & Automation</h3>
+          <p>CSV normalization pipeline with raw vs cleaned preview.</p>
+          <div class="project-actions"><a class="btn" href="#demo-clean">Live Preview</a></div>
+        </article>
       </div>
     </section>
 
