@@ -1,62 +1,65 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Nhat Nguyen | Data Analyst Portfolio</title>
-  <meta name="color-scheme" content="dark light" />
+  <meta name="color-scheme" content="dark light"/>
   <style>
     :root{
-      --bg:#0b0e14; --fg:#eaf0ff; --muted:#9aa4bc; --card:#121826;
-      --acc:#6ee7ff; --acc2:#8bffb1; --border:#243146; --chip:#0f1421;
-      --glass:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+      --bg:#061120; --bg2:#081528; --fg:#eaf4ff; --muted:#9fb3d1;
+      --sapphire:#3abff8; --ice:#a5f3fc; --neon:#67e8f9; --lime:#99f6e4;
+      --border:#18314f; --glass1:rgba(255,255,255,.07); --glass2:rgba(255,255,255,.03);
       --shadow-sm:0 8px 18px rgba(0,0,0,.35);
       --shadow:0 22px 60px rgba(0,0,0,.45);
       --shadow-lg:0 40px 120px rgba(0,0,0,.65);
-      --radius:18px
+      --radius:20px
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:
-      radial-gradient(1200px 600px at 10% 5%,rgba(42,119,255,.14),transparent 60%),
-      radial-gradient(1000px 600px at 100% 0%,rgba(0,255,204,.14),transparent 50%),
-      var(--bg);
+    html,body{
+      margin:0;padding:0;
+      background:
+        radial-gradient(1000px 500px at 10% -10%, rgba(58,191,248,.16), transparent 60%),
+        radial-gradient(900px 480px at 100% 0%, rgba(103,232,249,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
       color:var(--fg);
-      font-family:Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
-    a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+      font-family:Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6
+    }
+    a{color:var(--ice);text-decoration:none} a:hover{text-decoration:underline}
     .wrap{max-width:1200px;margin:0 auto;padding:28px}
-    header{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:12px 0 18px}
+    header{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:12px 0 18px;position:sticky;top:0;z-index:5;background:linear-gradient(180deg,rgba(6,17,32,.9),rgba(6,17,32,.65) 60%,transparent);backdrop-filter:blur(6px)}
     .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:18px}
-    .orb{width:32px;height:32px;border-radius:12px;background:
-      conic-gradient(from 0deg,#43e7fe,#00d4ff,#78ffce,#43e7fe);
-      box-shadow:0 0 20px rgba(0,212,255,.75)}
+    .orb{width:32px;height:32px;border-radius:12px;background:conic-gradient(from 0deg,#34d2ff,#00b7ff,#5bf1ff,#34d2ff);box-shadow:0 0 18px rgba(52,210,255,.8);animation:pulse 3.2s ease-in-out infinite}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
     nav a{margin:0 8px;padding:10px 12px;border-radius:12px} nav a:hover{background:rgba(255,255,255,.06)}
-    .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#00d4ff,#78ffce);color:#00121f;border:none;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer;box-shadow:0 0 22px rgba(0,212,255,.45);transition:transform .25s, box-shadow .25s}
-    .btn:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(0,212,255,.75)}
-    .btn.secondary{background:transparent;border:1px solid var(--border);color:var(--fg);box-shadow:none}
-    h1{font-weight:900;letter-spacing:.2px}
-    .hero{position:relative;border:1px solid var(--border);background:var(--glass);backdrop-filter:blur(8px);border-radius:22px;box-shadow:var(--shadow);padding:34px;overflow:hidden}
-    .hero::after{content:"";position:absolute;inset:auto -40px -40px -40px;height:220px;background:radial-gradient(closest-side,rgba(0,212,255,.18),transparent 70%);filter:blur(14px)}
-    .sub{color:var(--muted);font-size:18px;margin-top:8px}
+    .btn{position:relative;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#0ec5ff,#7de3ff);color:#00121f;border:none;border-radius:14px;padding:12px 16px;font-weight:800;cursor:pointer;box-shadow:0 0 22px rgba(14,197,255,.35);transition:transform .25s, box-shadow .25s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(14,197,255,.6)}
+    .btn.secondary{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));color:var(--fg);border:1px solid var(--border);box-shadow:none}
+    .hero{position:relative;border:1px solid var(--border);background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(10px);border-radius:26px;box-shadow:var(--shadow);padding:36px;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:-40% -20% auto -20%;height:260px;background:radial-gradient(closest-side,rgba(58,191,248,.22),transparent 70%);filter:blur(18px);pointer-events:none}
+    h1{font-weight:900;letter-spacing:.3px;margin:0}
+    .sub{color:var(--muted);font-size:18px;margin-top:10px}
     .stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
-    .stat{background:var(--glass);backdrop-filter:blur(6px);border:1px solid var(--border);padding:14px 16px;border-radius:14px;min-width:180px;box-shadow:var(--shadow-sm)}
-    .kpi{display:flex;gap:10px;align-items:center}
-    .kpi b{font-size:20px}
-    .section{padding:40px 0}
+    .stat{position:relative;background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(8px);border:1px solid var(--border);padding:14px 16px;border-radius:16px;min-width:180px;box-shadow:var(--shadow-sm)}
+    .stat::after{content:"";position:absolute;inset:-1px;pointer-events:none;border-radius:16px;background:linear-gradient(120deg,transparent,rgba(255,255,255,.18) 40%,transparent 60%);opacity:.35;mask:linear-gradient(#000 0 0) exclude, linear-gradient(#000 0 0)}
+    .section{padding:42px 0}
     .section h2{font-size:32px;margin:0 0 14px}
-    .grid{display:grid;gap:20px}
+    .grid{display:grid;gap:22px}
     .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
     .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
     @media (max-width:900px){.grid.cols-3{grid-template-columns:1fr 1fr}}
     @media (max-width:700px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
-    .card{background:var(--glass);backdrop-filter:blur(8px);border:1px solid var(--border);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .25s, box-shadow .25s}
+    .card{position:relative;background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(8px);border:1px solid var(--border);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:transform .25s, box-shadow .25s}
     .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .card::before{content:"";position:absolute;inset:-120% 20% -120% -40%;background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,.25) 50%,transparent 60%);transform:rotate(18deg);transition:transform .6s, left .6s}
+    .card:hover::before{transform:rotate(18deg) translateX(40%)}
     .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
     .chip{background:rgba(255,255,255,.06);border:1px solid var(--border);padding:6px 12px;border-radius:999px;font-size:13px}
     .project-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
     .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--border)}
-    .overlay{position:fixed;inset:0;background:rgba(2,6,14,.80);display:none;z-index:999}
+    .overlay{position:fixed;inset:0;background:rgba(2,8,18,.84);display:none;z-index:20}
     .overlay:target{display:block}
-    .modal{position:relative;margin:5vh auto;max-width:1100px;width:95%;background:var(--card);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow-lg);overflow:hidden}
+    .modal{position:relative;margin:5vh auto;max-width:1120px;width:95%;background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:22px;box-shadow:var(--shadow-lg);overflow:hidden}
     .modal header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border)}
     .modal .body{padding:16px}
     .close-link{padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--fg)}
@@ -64,13 +67,14 @@
     .tbl{border-collapse:collapse;width:100%;font-size:14px}
     .tbl th,.tbl td{border:1px solid var(--border);padding:8px 10px;text-align:center}
     .tbl th{background:rgba(255,255,255,.05)}
+    .tbl tr.selected td{background:rgba(58,191,248,.12)}
     .twocol{display:grid;grid-template-columns:1.6fr .9fr;gap:18px}
-    .side{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:14px}
+    .side{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;padding:14px}
     .side h4{margin:0 0 8px}
-    .barrow{display:flex;align-items:center;gap:10px;margin:6px 0}
-    .barlabel{width:110px}
-    .bar{flex:1;height:10px;border-radius:999px;background:#0f1421;border:1px solid var(--border);overflow:hidden}
-    .bar>span{display:block;height:100%;background:linear-gradient(90deg,#00d4ff,#78ffce)}
+    .barrow{display:flex;align-items:center;gap:10px;margin:8px 0}
+    .barlabel{width:120px}
+    .bar{flex:1;height:10px;border-radius:999px;background:#0b1526;border:1px solid var(--border);overflow:hidden}
+    .bar>span{display:block;height:100%;background:linear-gradient(90deg,#0ec5ff,#7de3ff)}
     footer{margin:44px 0 16px;color:var(--muted);text-align:center}
     pre{background:#0b0e14;color:#e9eefc;border-radius:12px;padding:14px;overflow:auto;font-size:13px;border:1px solid var(--border)}
     code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
@@ -91,14 +95,12 @@
     <section class="hero" id="intro">
       <h1>Data, Signals, and AI-ready Insights</h1>
       <p class="sub">
-        I’m <strong>Nhat Nguyen</strong>, a data analyst who loves turning messy datasets into crisp, decision-ready stories.
-        I’m energized by new technology and the AI wave—curious, fast-learning, and resilient. Challenges don’t slow me down;
-        they’re chances to build better systems and never give up. I bring that drive to SQL, Python, and BI work every day.
+        I’m <strong>Nhat Nguyen</strong>, a data analyst who turns messy datasets into crisp, decision-ready stories. I learn fast, stay curious, and don’t quit when things get tough—every challenge is a chance to build better systems with SQL, Python, and BI.
       </p>
       <div class="stats">
-        <div class="stat"><div class="kpi"><b>12+</b> dashboards</div><div class="muted">Power BI · Tableau</div></div>
-        <div class="stat"><div class="kpi"><b>7</b> end-to-end projects</div><div class="muted">ETL · SQL · EDA</div></div>
-        <div class="stat"><div class="kpi"><b>4</b> case studies</div><div class="muted">Business Impact</div></div>
+        <div class="stat"><div><b>12+</b> dashboards</div><div style="color:var(--muted)">Power BI · Tableau</div></div>
+        <div class="stat"><div><b>7</b> end-to-end projects</div><div style="color:var(--muted)">ETL · SQL · EDA</div></div>
+        <div class="stat"><div><b>4</b> case studies</div><div style="color:var(--muted)">Business Impact</div></div>
       </div>
     </section>
 
@@ -119,10 +121,10 @@
           <div style="display:flex;justify-content:space-between;align-items:center">
             <h3>E-commerce Sales Performance</h3><span class="tag">BI / KPI</span>
           </div>
-          <p>KPI dashboard simulating sales by category, region, and segment with drill-down behaviour.</p>
+          <p>KPI dashboard simulating sales by category, region, and segment with drill-downs.</p>
           <ul>
             <li><strong>Skills:</strong> KPI design, data modeling, SQL/LOD thinking</li>
-            <li><strong>Impact:</strong> Identified unprofitable SKUs and reduced returns by 8%</li>
+            <li><strong>Impact:</strong> Flagged unprofitable SKUs; reduced returns by 8%</li>
           </ul>
           <div class="project-actions">
             <a class="btn" href="#demo-ecom">Live Preview</a>
@@ -136,7 +138,7 @@
           <div style="display:flex;justify-content:space-between;align-items:center">
             <h3>Airline Delay Analysis</h3><span class="tag">SQL / Python</span>
           </div>
-          <p>Monthly delay percentages by carrier with season insights. Click a carrier to see the worst month and date per season.</p>
+          <p>Monthly delay percentages by carrier with seasonal worst-month insights. Click a carrier for details.</p>
           <ul>
             <li><strong>Skills:</strong> SQL CTEs & window functions, pandas EDA</li>
             <li><strong>Insight:</strong> Weather spikes in winter for northern hubs</li>
@@ -153,7 +155,7 @@
           <div style="display:flex;justify-content:space-between;align-items:center">
             <h3>Data Cleaning & Automation</h3><span class="tag">Python / ETL</span>
           </div>
-          <p>CSV normalization pipeline (dates, categories, duplicates) with raw vs cleaned table preview.</p>
+          <p>CSV normalization (dates, categories, duplicates) with a raw vs cleaned preview.</p>
           <ul>
             <li><strong>Skills:</strong> pandas, regex, scheduling</li>
             <li><strong>Impact:</strong> Cut manual processing by 70%</li>
@@ -173,7 +175,7 @@
       <div class="grid cols-3">
         <article class="card">
           <h3>Data Analyst (BI-first)</h3>
-          <p>Own KPIs, build executive dashboards, and communicate insights clearly to drive product and revenue decisions.</p>
+          <p>Own KPIs, build executive dashboards, and communicate insights to drive product and revenue decisions.</p>
         </article>
         <article class="card">
           <h3>SQL & Python Excellence</h3>
@@ -204,7 +206,7 @@
           <div class="twocol">
             <div>
               <table class="tbl" id="airMonthTbl"></table>
-              <div style="font-size:12px;color:var(--muted);margin-top:6px">Higher % = larger share of delayed arrivals that month.</div>
+              <div style="font-size:12px;color:var(--muted);margin-top:6px">Higher % means a larger share of delayed arrivals that month.</div>
             </div>
             <div class="side" id="airSide">
               <h4>Details</h4>
@@ -306,7 +308,7 @@ def clean(df):
         const vals=airMonthly[c];
         const max=Math.max(...vals), maxIdx=vals.indexOf(max);
         rows+=`<tr data-carrier="${c}" style="cursor:pointer"><td><strong>${c}</strong></td>`+
-              vals.map((v,i)=>`<td${i===maxIdx?' style="background:rgba(255,255,255,.08)"':''}>${v}%</td>`).join('')+
+              vals.map((v,i)=>`<td${i===maxIdx?' style="background:rgba(58,191,248,.12)"':''}>${v}%</td>`).join('')+
               `<td><b>${months[maxIdx]}</b> ${max}%</td></tr>`;
       });
       tbl.innerHTML=thead+rows;
@@ -316,9 +318,9 @@ def clean(df):
       const out={};
       for(const s of Object.keys(seasonMap)){
         const idxs=seasonMap[s];
-        let bestI=idxs[0], bestV=vals[bestI];
-        idxs.forEach(i=>{ if(vals[i]>bestV){ bestV=vals[i]; bestI=i } });
-        out[s]={month:months[bestI], value:bestV, monthIndex:bestI};
+        let mi=idxs[0], mv=vals[mi];
+        idxs.forEach(i=>{ if(vals[i]>mv){ mv=vals[i]; mi=i } });
+        out[s]={month:months[mi], value:mv, monthIndex:mi};
       }
       return out;
     }
@@ -386,8 +388,11 @@ def clean(df):
       if(h==='#demo-ecom' && !inited.e){initEcom(); inited.e=true}
       if(h==='#demo-air'  && !inited.air){
         renderAirMonthTable();
-        document.getElementById('airMonthTbl').addEventListener('click',e=>{
+        const tbl=document.getElementById('airMonthTbl');
+        tbl.addEventListener('click',e=>{
           const tr=e.target.closest('tr[data-carrier]'); if(!tr) return;
+          [...tbl.querySelectorAll('tr')].forEach(r=>r.classList.remove('selected'));
+          tr.classList.add('selected');
           detailPanel(tr.dataset.carrier);
         });
         inited.air=true;
