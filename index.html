@@ -7,40 +7,41 @@
   <meta name="color-scheme" content="dark light"/>
   <style>
     :root{
-      --bg:#061120; --bg2:#081528; --fg:#eaf4ff; --muted:#9fb3d1;
-      --sapphire:#3abff8; --ice:#a5f3fc; --neon:#67e8f9; --lime:#99f6e4;
-      --border:#18314f; --glass1:rgba(255,255,255,.07); --glass2:rgba(255,255,255,.03);
-      --shadow-sm:0 8px 18px rgba(0,0,0,.35);
-      --shadow:0 22px 60px rgba(0,0,0,.45);
-      --shadow-lg:0 40px 120px rgba(0,0,0,.65);
-      --radius:20px
+      --bg:#ffffff; --bg2:#f8f9fa; --fg:#212529; --muted:#6c757d;
+      --sapphire:#007bff; --ice:#17a2b8; --neon:#28a745; --lime:#ffc107;
+      --border:#dee2e6; --glass1:rgba(0,0,0,.05); --glass2:rgba(0,0,0,.02);
+      --shadow-sm:0 8px 18px rgba(0,0,0,.1);
+      --shadow:0 22px 60px rgba(0,0,0,.15);
+      --shadow-lg:0 40px 120px rgba(0,0,0,.2);
+      --radius:32px
     }
     *{box-sizing:border-box}
     html,body{
       margin:0;padding:0;
       background:
-        radial-gradient(1000px 500px at 10% -10%, rgba(58,191,248,.16), transparent 60%),
-        radial-gradient(900px 480px at 100% 0%, rgba(103,232,249,.12), transparent 55%),
+        radial-gradient(1000px 500px at 10% -10%, rgba(0,123,255,.1), transparent 60%),
+        radial-gradient(900px 480px at 100% 0%, rgba(23,162,184,.08), transparent 55%),
         linear-gradient(180deg, var(--bg), var(--bg2));
       color:var(--fg);
       font-family:Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6
     }
     a{color:var(--ice);text-decoration:none} a:hover{text-decoration:underline}
     .wrap{max-width:1200px;margin:0 auto;padding:28px}
-    header{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:12px 0 18px;position:sticky;top:0;z-index:5;background:linear-gradient(180deg,rgba(6,17,32,.9),rgba(6,17,32,.65) 60%,transparent);backdrop-filter:blur(6px)}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:18px}
-    .orb{width:32px;height:32px;border-radius:12px;background:conic-gradient(from 0deg,#34d2ff,#00b7ff,#5bf1ff,#34d2ff);box-shadow:0 0 18px rgba(52,210,255,.8);animation:pulse 3.2s ease-in-out infinite}
-    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
-    nav a{margin:0 8px;padding:10px 12px;border-radius:12px} nav a:hover{background:rgba(255,255,255,.06)}
+    header{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:20px 40px;background:#7FFFD4;border-bottom:1px solid #e5e5e5;position:sticky;top:0;z-index:5;border-radius:0 0 24px 24px;}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:20px;color:#000;}
+    .orb{display:none;}
+    nav{display:flex;gap:24px;}
+    nav a{margin:0;padding:8px 0;color:#333;text-decoration:none;font-weight:500;font-size:16px;transition:color .2s;}
+    nav a:hover{color:#007aff;}
     .btn{position:relative;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#0ec5ff,#7de3ff);color:#00121f;border:none;border-radius:14px;padding:12px 16px;font-weight:800;cursor:pointer;box-shadow:0 0 22px rgba(14,197,255,.35);transition:transform .25s, box-shadow .25s}
     .btn:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(14,197,255,.6)}
-    .btn.secondary{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));color:var(--fg);border:1px solid var(--border);box-shadow:none}
-    .hero{position:relative;border:1px solid var(--border);background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(10px);border-radius:26px;box-shadow:var(--shadow);padding:36px;overflow:hidden}
-    .hero::before{content:"";position:absolute;inset:-40% -20% auto -20%;height:260px;background:radial-gradient(closest-side,rgba(58,191,248,.22),transparent 70%);filter:blur(18px);pointer-events:none}
+    .btn.secondary{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));color:var(--fg);border:1px solid var(--border);box-shadow:none;border-radius:20px}
+    .hero{position:relative;border:1px solid var(--border);background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(10px);border-radius:40px;box-shadow:var(--shadow);padding:36px;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:-40% -20% auto -20%;height:260px;background:radial-gradient(closest-side,rgba(0,123,255,.15),transparent 70%);filter:blur(18px);pointer-events:none}
     h1{font-weight:900;letter-spacing:.3px;margin:0}
     .sub{color:var(--muted);font-size:18px;margin-top:10px}
     .stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
-    .stat{position:relative;background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(8px);border:1px solid var(--border);padding:14px 16px;border-radius:16px;min-width:180px;box-shadow:var(--shadow-sm)}
+    .stat{position:relative;background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(8px);border:1px solid var(--border);padding:14px 16px;border-radius:24px;min-width:180px;box-shadow:var(--shadow-sm)}
     .stat::after{content:"";position:absolute;inset:-1px;pointer-events:none;border-radius:16px;background:linear-gradient(120deg,transparent,rgba(255,255,255,.18) 40%,transparent 60%);opacity:.35;mask:linear-gradient(#000 0 0) exclude, linear-gradient(#000 0 0)}
     .section{padding:42px 0}
     .section h2{font-size:32px;margin:0 0 14px}
@@ -54,30 +55,34 @@
     .card::before{content:"";position:absolute;inset:-120% 20% -120% -40%;background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,.25) 50%,transparent 60%);transform:rotate(18deg);transition:transform .6s, left .6s}
     .card:hover::before{transform:rotate(18deg) translateX(40%)}
     .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .chip{background:rgba(255,255,255,.06);border:1px solid var(--border);padding:6px 12px;border-radius:999px;font-size:13px}
+    .chip{background:rgba(255,255,255,.06);border:1px solid var(--border);padding:6px 12px;border-radius:24px;font-size:13px}
     .project-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--border)}
-    .overlay{position:fixed;inset:0;background:rgba(2,8,18,.84);display:none;z-index:20}
+    .tag{font-size:12px;padding:6px 10px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid var(--border)}
+    .overlay{position:fixed;inset:0;background:rgba(248,249,250,.9);display:none;z-index:20}
     .overlay:target{display:block}
-    .modal{position:relative;margin:5vh auto;max-width:1120px;width:95%;background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:22px;box-shadow:var(--shadow-lg);overflow:hidden}
+    .modal{position:relative;margin:5vh auto;max-width:1120px;width:95%;background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:36px;box-shadow:var(--shadow-lg);overflow:hidden}
     .modal header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border)}
     .modal .body{padding:16px}
-    .close-link{padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--fg)}
+    .close-link{padding:8px 12px;border-radius:16px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--fg)}
     .demo{display:grid;gap:14px}
     .tbl{border-collapse:collapse;width:100%;font-size:14px}
     .tbl th,.tbl td{border:1px solid var(--border);padding:8px 10px;text-align:center}
-    .tbl th{background:rgba(255,255,255,.05)}
-    .tbl tr.selected td{background:rgba(58,191,248,.12)}
+    .tbl th{background:rgba(0,0,0,.05)}
+    .tbl tr.selected td{background:rgba(0,123,255,.15)}
     .twocol{display:grid;grid-template-columns:1.6fr .9fr;gap:18px}
-    .side{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;padding:14px}
+    .side{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:24px;padding:14px}
     .side h4{margin:0 0 8px}
     .barrow{display:flex;align-items:center;gap:10px;margin:8px 0}
     .barlabel{width:120px}
-    .bar{flex:1;height:10px;border-radius:999px;background:#0b1526;border:1px solid var(--border);overflow:hidden}
+    .bar{flex:1;height:10px;border-radius:24px;background:#e9ecef;border:1px solid var(--border);overflow:hidden}
     .bar>span{display:block;height:100%;background:linear-gradient(90deg,#0ec5ff,#7de3ff)}
     footer{margin:44px 0 16px;color:var(--muted);text-align:center}
-    pre{background:#0b0e14;color:#e9eefc;border-radius:12px;padding:14px;overflow:auto;font-size:13px;border:1px solid var(--border)}
-    code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    .timeline{position:relative;padding-left:40px}
+    .timeline::before{content:"";position:absolute;left:15px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom, var(--sapphire), var(--lime))}
+    .timeline-item{position:relative;margin-bottom:30px}
+    .timeline-marker{position:absolute;left:-25px;top:0;width:10px;height:10px;border-radius:50%;background:var(--sapphire);border:2px solid var(--bg)}
+    .timeline-content{background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(8px);border:1px solid var(--border);padding:20px;border-radius:24px;box-shadow:var(--shadow-sm)}
+    .timeline-date{color:var(--muted);font-size:14px;margin-bottom:8px}
   </style>
 </head>
 <body>
@@ -86,34 +91,58 @@
       <div class="brand"><span class="orb"></span> Nhat Nguyen · Data Analyst</div>
       <nav>
         <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#achievements">Achievements</a>
         <a href="#skills">Skills</a>
         <a href="#goals">Goals</a>
+        <a href="#future-ai">Future AI</a>
+        <a href="#interests">Interests</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <section class="hero" id="intro">
-      <h1>Data, Signals, and AI-ready Insights</h1>
-      <p class="sub">
-        I’m <strong>Nhat Nguyen</strong>, a data analyst who turns messy datasets into crisp, decision-ready stories. I learn fast, stay curious, and don’t quit when things get tough—every challenge is a chance to build better systems with SQL, Python, and BI.
-      </p>
-      <div class="stats">
-        <div class="stat"><div><b>12+</b> dashboards</div><div style="color:var(--muted)">Power BI · Tableau</div></div>
-        <div class="stat"><div><b>7</b> end-to-end projects</div><div style="color:var(--muted)">ETL · SQL · EDA</div></div>
-        <div class="stat"><div><b>4</b> case studies</div><div style="color:var(--muted)">Business Impact</div></div>
+      <div style="display:flex;align-items:center;gap:30px;flex-wrap:wrap">
+        <div style="flex:1;min-width:250px">
+          <h1>Data, Signals, and AI-ready Insights</h1>
+          <p class="sub">
+            I’m <strong>Nhat Nguyen</strong>, a data analyst who turns messy datasets into crisp, decision-ready stories. I learn fast, stay curious, and don’t quit when things get tough—every challenge is a chance to build better systems with SQL, Python, and BI.
+          </p>
+          <div class="stats">
+            <div class="stat"><div><b>12+</b> dashboards</div><div style="color:var(--muted)">Power BI · Tableau</div></div>
+            <div class="stat"><div><b>7</b> end-to-end projects</div><div style="color:var(--muted)">ETL · SQL · EDA</div></div>
+            <div class="stat"><div><b>4</b> case studies</div><div style="color:var(--muted)">Business Impact</div></div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section" id="skills">
       <h2>Skills</h2>
       <div class="card">
-        <div class="barrow"><div class="barlabel">Tableau</div><div class="bar"><span style="width:95%"></span></div><div>95%</div></div>
-        <div class="barrow"><div class="barlabel">SQL</div><div class="bar"><span style="width:92%"></span></div><div>92%</div></div>
-        <div class="barrow"><div class="barlabel">Power BI</div><div class="bar"><span style="width:88%"></span></div><div>88%</div></div>
-        <div class="barrow"><div class="barlabel">Python</div><div class="bar"><span style="width:85%"></span></div><div>85%</div></div>
+        <div class="barrow"><div class="barlabel">📊 Tableau</div><div class="bar"><span style="width:95%"></span></div><div>95%</div></div>
+        <div class="barrow"><div class="barlabel">🗄️ SQL</div><div class="bar"><span style="width:92%"></span></div><div>92%</div></div>
+        <div class="barrow"><div class="barlabel">⚡ Power BI</div><div class="bar"><span style="width:88%"></span></div><div>88%</div></div>
+        <div class="barrow"><div class="barlabel">🐍 Python</div><div class="bar"><span style="width:85%"></span></div><div>85%</div></div>
       </div>
     </section>
-
+    <section class="section" id="interests">
+      <h2>Interests & Hobbies</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>🤖 AI & Machine Learning</h3>
+          <p>Exploring the latest advancements in AI, from transformers to reinforcement learning.</p>
+        </div>
+        <div class="card">
+          <h3>📊 Data Visualization</h3>
+          <p>Creating beautiful and insightful charts, dashboards, and interactive visualizations.</p>
+        </div>
+        <div class="card">
+          <h3>🏃‍♂️ Running & Fitness</h3>
+          <p>Marathon training, yoga, and maintaining a healthy lifestyle through data-driven fitness tracking.</p>
+        </div>
+      </div>
+    </section>
     <section class="section" id="projects">
       <h2>Projects</h2>
       <div class="grid cols-3">
@@ -167,6 +196,100 @@
       </div>
     </section>
 
+    <section class="section" id="experience">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Data Analyst</h3>
+            <p class="timeline-date">2022 - Present</p>
+            <p>Developed dashboards and reports for key business metrics, improving decision-making processes. Collaborated with cross-functional teams to deliver data-driven insights.</p>
+            <div class="chips"><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Python</span></div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Junior Analyst</h3>
+            <p class="timeline-date">2020 - 2022</p>
+            <p>Assisted in data cleaning, ETL processes, and basic visualizations. Learned advanced SQL and BI tools.</p>
+            <div class="chips"><span class="chip">Excel</span><span class="chip">Tableau</span><span class="chip">ETL</span></div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Bachelor's in Data Science</h3>
+            <p class="timeline-date">2016 - 2020</p>
+            <p>Graduated with honors, focusing on statistics, machine learning, and data visualization.</p>
+            <div class="chips"><span class="chip">Statistics</span><span class="chip">ML</span><span class="chip">Python</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="achievements">
+      <h2>Achievements</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>🏆 Certifications</h3>
+          <ul>
+            <li>Google Data Analytics Certificate</li>
+            <li>Microsoft Certified: Power BI Data Analyst</li>
+            <li>AWS Certified Cloud Practitioner</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>📈 Key Metrics</h3>
+          <ul>
+            <li>Reduced reporting time by 50%</li>
+            <li>Increased data accuracy by 30%</li>
+            <li>Automated 5+ manual processes</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="future-ai">
+      <h2>Future AI Projects in Healthcare</h2>
+      <div class="grid cols-3">
+        <article class="card">
+          <h3>AI-Powered Diagnostics</h3>
+          <p>Developing machine learning models for early disease detection using medical imaging and patient data, assisting doctors in accurate diagnoses.</p>
+          <div class="chips"><span class="chip">Deep Learning</span><span class="chip">Computer Vision</span><span class="chip">Healthcare</span></div>
+        </article>
+
+        <article class="card">
+          <h3>Predictive Patient Outcomes</h3>
+          <p>Using time-series analysis and reinforcement learning to predict patient recovery trajectories and optimize treatment plans.</p>
+          <div class="chips"><span class="chip">Time Series</span><span class="chip">Reinforcement Learning</span><span class="chip">Personalized Medicine</span></div>
+        </article>
+
+        <article class="card">
+          <h3>AI-Assisted Drug Discovery</h3>
+          <p>Leveraging generative AI and molecular modeling to accelerate drug development, reducing time and cost for new therapies.</p>
+          <div class="chips"><span class="chip">Generative AI</span><span class="chip">Molecular Modeling</span><span class="chip">Pharmaceuticals</span></div>
+        </article>
+
+        <article class="card">
+          <h3>Intelligent Hospital Management</h3>
+          <p>Implementing AI for resource allocation, patient flow optimization, and predictive maintenance of medical equipment.</p>
+          <div class="chips"><span class="chip">Operations Research</span><span class="chip">IoT Integration</span><span class="chip">Efficiency</span></div>
+        </article>
+
+        <article class="card">
+          <h3>Virtual Health Assistants</h3>
+          <p>Creating conversational AI systems for patient triage, appointment scheduling, and continuous health monitoring.</p>
+          <div class="chips"><span class="chip">NLP</span><span class="chip">Chatbots</span><span class="chip">Telemedicine</span></div>
+        </article>
+
+        <article class="card">
+          <h3>Ethical AI in Medicine</h3>
+          <p>Developing frameworks for bias detection, explainable AI models, and ensuring equitable healthcare delivery.</p>
+          <div class="chips"><span class="chip">Ethics</span><span class="chip">Explainable AI</span><span class="chip">Fairness</span></div>
+        </article>
+      </div>
+    </section>
     <section class="section" id="goals">
       <h2>Career Goals</h2>
       <div class="grid cols-3">
@@ -184,21 +307,20 @@
         </article>
       </div>
     </section>
-
-    <div class="overlay" id="demo-ecom">
-      <div class="modal">
-        <header><strong>E-commerce – Live Preview</strong><a class="close-link" href="#close">Close</a></header>
-        <div class="body">
-          <div class="demo">
-            <canvas id="ecomChart" height="420"></canvas>
+      <div class="overlay" id="demo-ecom">
+        <div class="modal">
+          <header><strong>E-commerce – Live Preview</strong><a class="close-link" href="#">Close</a></header>
+          <div class="body">
+            <div class="demo">
+              <canvas id="ecomChart" height="420"></canvas>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
     <div class="overlay" id="demo-air">
       <div class="modal">
-        <header><strong>Airline Delays – Monthly % by Carrier</strong><a class="close-link" href="#close">Close</a></header>
+        <header><strong>Airline Delays – Monthly % by Carrier</strong><a class="close-link" href="#">Close</a></header>
         <div class="body">
           <div class="twocol">
             <div>
@@ -216,7 +338,7 @@
 
     <div class="overlay" id="demo-clean">
       <div class="modal">
-        <header><strong>Data Cleaning – Raw vs Cleaned</strong><a class="close-link" href="#close">Close</a></header>
+        <header><strong>Data Cleaning – Raw vs Cleaned</strong><a class="close-link" href="#">Close</a></header>
         <div class="body">
           <div class="demo">
             <div class="twocol" style="grid-template-columns:1fr 1fr">
@@ -249,11 +371,16 @@ def clean(df):
     <section class="section" id="contact">
       <h2>Contact</h2>
       <div class="card">
-        <p><strong>Email:</strong> <a href="mailto:jasonnguyen101191@gmail.com">jasonnguyen101191@gmail.com</a></p>
+        <p><strong>Email:</strong> <a href="mailto:dynguyen19910@gmail.com">dynguyen19910@gmail.com</a></p>
+        <div style="display:flex;gap:16px;margin:16px 0;">
+          <a href="https://linkedin.com/in/nhat-nguyen-5a8714193" target="_blank" style="color:#0077b5;font-size:24px;">💼 LinkedIn</a>
+          <a href="https://github.com/nhatnguyen" target="_blank" style="color:#333;font-size:24px;">🐙 GitHub</a>
+          <a href="https://twitter.com/nhatnguyen" target="_blank" style="color:#1da1f2;font-size:24px;">🐦 Twitter</a>
+        </div>
         <form onsubmit="return sendMail(event)" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-          <label>Name<br/><input required name="name" placeholder="Your name" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--fg)"></label>
-          <label>Email<br/><input required type="email" name="email" placeholder="email@domain.com" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--fg)"></label>
-          <label style="grid-column:1/-1">Message<br/><textarea required name="message" rows="4" placeholder="Tell me about the role or project..." style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--fg)"></textarea></label>
+          <label>Name<br/><input required name="name" placeholder="Your name" style="width:100%;padding:12px;border-radius:20px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--fg)"></label>
+          <label>Email<br/><input required type="email" name="email" placeholder="email@domain.com" style="width:100%;padding:12px;border-radius:20px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--fg)"></label>
+          <label style="grid-column:1/-1">Message<br/><textarea required name="message" rows="4" placeholder="Tell me about the role or project..." style="width:100%;padding:12px;border-radius:20px;border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--fg)"></textarea></label>
           <div><button class="btn" type="submit">Send</button> <span class="muted" id="formMsg"></span></div>
         </form>
       </div>
@@ -271,7 +398,7 @@ def clean(df):
       const f=e.target, n=encodeURIComponent(f.name.value.trim()),
             m=encodeURIComponent(f.message.value.trim()),
             em=encodeURIComponent(f.email.value.trim());
-      window.location.href=`mailto:jasonnguyen101191@gmail.com?subject=Portfolio%20Contact&body=Name:%20${n}%0AEmail:%20${em}%0A%0A${m}`;
+      window.location.href=`mailto:dynguyen19910@gmail.com?subject=Portfolio%20Contact&body=Name:%20${n}%0AEmail:%20${em}%0A%0A${m}`;
       const msg=document.getElementById('formMsg'); if(msg) msg.textContent='Opening your email client…';
       f.reset(); return false;
     }
@@ -281,8 +408,8 @@ def clean(df):
       new Chart(ctx,{type:'bar',
         data:{labels:['Furniture','Office Supplies','Technology'],
           datasets:[
-            {label:'Revenue ($k)', data:[120,95,155], borderWidth:1},
-            {label:'Profit ($k)',  data:[8,11,23], type:'line', tension:.35, borderWidth:2, pointRadius:3}
+            {label:'Revenue ($k)', data:[120,95,155], backgroundColor:'rgba(0,123,255,0.7)', borderColor:'rgba(0,123,255,1)', borderWidth:1},
+            {label:'Profit ($k)',  data:[8,11,23], type:'line', backgroundColor:'rgba(40,167,69,0.7)', borderColor:'rgba(40,167,69,1)', tension:.35, borderWidth:2, pointRadius:3}
           ]},
         options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'top'}}, scales:{y:{beginAtZero:true}}}
       });
@@ -305,7 +432,7 @@ def clean(df):
         const vals=airMonthly[c];
         const max=Math.max(...vals), maxIdx=vals.indexOf(max);
         rows+=`<tr data-carrier="${c}" style="cursor:pointer"><td><strong>${c}</strong></td>`+
-              vals.map((v,i)=>`<td${i===maxIdx?' style="background:rgba(58,191,248,.12)"':''}>${v}%</td>`).join('')+
+              vals.map((v,i)=>`<td${i===maxIdx?' style="background:rgba(255,193,7,.2)"':''}>${v}%</td>`).join('')+
               `<td><b>${months[maxIdx]}</b> ${max}%</td></tr>`;
       });
       tbl.innerHTML=thead+rows;
