@@ -18,6 +18,7 @@
     *{box-sizing:border-box}
     html,body{
       margin:0;padding:0;
+      overflow-y:auto;
       background:
         radial-gradient(1000px 500px at 10% -10%, rgba(0,123,255,.1), transparent 60%),
         radial-gradient(900px 480px at 100% 0%, rgba(23,162,184,.08), transparent 55%),
@@ -84,31 +85,107 @@
     .timeline-marker{position:absolute;left:-25px;top:0;width:10px;height:10px;border-radius:50%;background:var(--sapphire);border:2px solid var(--bg)}
     .timeline-content{background:linear-gradient(180deg,var(--glass1),var(--glass2));backdrop-filter:blur(8px);border:1px solid var(--border);padding:20px;border-radius:24px;box-shadow:var(--shadow-sm)}
     .timeline-date{color:var(--muted);font-size:14px;margin-bottom:8px}
+
+    /* Dark Mode: keep dock but show ONLY the toggle */
+    body.dark-view nav{display:none}
+    body.dark-view .brand{display:none}
+
+    /* Dark achievements page — simple ordered journey */
+    .dark-page{padding:34px 0}
+
+    .journey{
+      position:relative;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:44px;
+      background:
+        radial-gradient(1100px 650px at 50% 28%, rgba(14,197,255,.14), transparent 60%),
+        linear-gradient(180deg,var(--glass1),var(--glass2));
+      box-shadow:0 30px 120px rgba(0,0,0,.55);
+      overflow:hidden;
+      margin-top:16px;
+      padding:22px;
+    }
+
+    /* subtle particles (reuse existing element) */
+    .journey .ring-beams{
+      position:absolute; inset:0;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(14,197,255,.10), transparent 62%),
+        radial-gradient(rgba(14,197,255,.26) 1px, transparent 1.5px);
+      background-size:auto, 22px 22px;
+      opacity:.35;
+      filter:blur(.2px);
+      mix-blend-mode:screen;
+      pointer-events:none;
+    }
+
+    .steps{position:relative;display:grid;gap:14px}
+
+    .step{
+      position:relative;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:28px;
+      padding:18px;
+      box-shadow:0 16px 46px rgba(0,0,0,.55), 0 0 22px rgba(14,197,255,.08);
+      backdrop-filter:blur(10px);
+    }
+
+    .step-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    .step-num{
+      width:34px;height:34px;border-radius:999px;
+      display:grid;place-items:center;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(14,197,255,.12);
+      font-weight:900
+    }
+
+    .step h3{margin:0}
+
+    /* connector line */
+    .step::before{
+      content:"";
+      position:absolute;
+      left:34px;
+      top:-14px;
+      height:14px;
+      width:2px;
+      background:linear-gradient(to bottom, rgba(14,197,255,.0), rgba(14,197,255,.55));
+      opacity:.8;
+    }
+    .step:first-child::before{display:none}
+
+    @media (max-width:700px){
+      .journey{padding:16px}
+      .step-head{gap:10px}
+      .step-num{width:32px;height:32px}
+      .step::before{left:32px}
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div class="brand"><span class="orb"></span> Nhat Nguyen · Data Analyst</div>
+      <div class="brand"><span class="orb"></span> Nhat Nguyen</div>
       <nav>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a href="#achievements">Achievements</a>
-        <a href="#skills">Skills</a>
         <a href="#goals">Goals</a>
         <a href="#future-ai">Future AI</a>
-        <a href="#interests">Interests</a>
         <a href="#contact">Contact</a>
       </nav>
       <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
     </header>
 
+    <div id="pageMain">
+
     <section class="hero" id="intro">
       <div style="display:flex;align-items:center;gap:30px;flex-wrap:wrap">
         <div style="flex:1;min-width:250px">
-          <h1>Data, Signals, and AI-ready Insights</h1>
+          <h1>Data, Signals, and AI-Ready Insights — Turning Messy Data into Clear, Confident Business Decisions</h1>
           <p class="sub">
-            I’m <strong>Nhat Nguyen</strong>, a data analyst who turns messy datasets into crisp, decision-ready stories. I learn fast, stay curious, and don’t quit when things get tough—every challenge is a chance to build better systems with SQL, Python, and BI.
+            I’m <strong>Nhat Nguyen</strong>, a data analyst who turns messy datasets into clean, trustworthy insights that leaders can act on. I design KPI frameworks, build interactive dashboards, and automate reporting so teams spend less time pulling numbers and more time making decisions. From raw data to crisp storytelling, I ship practical solutions with <strong>SQL</strong>, <strong>Python</strong>, <strong>Power BI</strong>, and <strong>Tableau</strong>.
           </p>
           <div class="stats">
             <div class="stat"><div><b>12+</b> dashboards</div><div style="color:var(--muted)">Power BI · Tableau</div></div>
@@ -119,32 +196,33 @@
       </div>
     </section>
 
-    <section class="section" id="skills">
-      <h2>Skills</h2>
-      <div class="card">
-        <div class="barrow"><div class="barlabel">📊 Tableau</div><div class="bar"><span style="width:95%"></span></div><div>95%</div></div>
-        <div class="barrow"><div class="barlabel">🗄️ SQL</div><div class="bar"><span style="width:92%"></span></div><div>92%</div></div>
-        <div class="barrow"><div class="barlabel">⚡ Power BI</div><div class="bar"><span style="width:88%"></span></div><div>88%</div></div>
-        <div class="barrow"><div class="barlabel">🐍 Python</div><div class="bar"><span style="width:85%"></span></div><div>85%</div></div>
+    <section class="section" id="experience">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Data Analyst</h3>
+            <p>Owned KPI reporting end-to-end—partnered with stakeholders to define metrics, modeled clean datasets, and delivered executive-ready dashboards that improved visibility into performance and accelerated decision-making.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Junior Analyst</h3>
+            <p>Supported senior analysts by cleaning and validating data, building repeatable ETL workflows, and producing clear visualizations and ad-hoc analyses to answer urgent business questions.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <h3>Bachelor of Science in Information Technology</h3>
+            <p>Built a strong foundation in systems and analytics—statistics, data structures, and applied machine learning—with hands-on projects focused on data cleaning, visualization, and practical problem-solving.</p>
+          </div>
+        </div>
       </div>
     </section>
-    <section class="section" id="interests">
-      <h2>Interests & Hobbies</h2>
-      <div class="grid cols-3">
-        <div class="card">
-          <h3>🤖 AI & Machine Learning</h3>
-          <p>Exploring the latest advancements in AI, from transformers to reinforcement learning.</p>
-        </div>
-        <div class="card">
-          <h3>📊 Data Visualization</h3>
-          <p>Creating beautiful and insightful charts, dashboards, and interactive visualizations.</p>
-        </div>
-        <div class="card">
-          <h3>🏃‍♂️ Running & Fitness</h3>
-          <p>Marathon training, yoga, and maintaining a healthy lifestyle through data-driven fitness tracking.</p>
-        </div>
-      </div>
-    </section>
+
     <section class="section" id="projects">
       <h2>Projects</h2>
       <div class="grid cols-3">
@@ -198,36 +276,79 @@
       </div>
     </section>
 
-    <section class="section" id="experience">
-      <h2>Experience</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>Data Analyst</h3>
-            <p class="timeline-date">2022 - Present</p>
-            <p>Developed dashboards and reports for key business metrics, improving decision-making processes. Collaborated with cross-functional teams to deliver data-driven insights.</p>
-            <div class="chips"><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Python</span></div>
+    <section class="section" id="skills">
+      <h2>Skills</h2>
+      <p class="sub" style="margin-top:6px">What I can do across <strong>Data Analytics</strong>, <strong>AI/ML</strong>, and <strong>Software Engineering</strong>—from raw data to shipped, reliable solutions.</p>
+
+      <div class="grid cols-3">
+        <article class="card">
+          <h3>📊 Data Analytics — What I Deliver</h3>
+          <p>Business-ready insights through KPI design, analytics workflows, and executive dashboards.</p>
+          <ul style="margin:10px 0 0; padding-left:18px">
+            <li>Define KPIs & build stakeholder-ready dashboards</li>
+            <li>Analyze trends, cohorts, funnel & retention</li>
+            <li>Design clean data models for reporting</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">Tableau</span>
+            <span class="chip">EDA</span><span class="chip">A/B Testing</span><span class="chip">Storytelling</span>
           </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>Junior Analyst</h3>
-            <p class="timeline-date">2020 - 2022</p>
-            <p>Assisted in data cleaning, ETL processes, and basic visualizations. Learned advanced SQL and BI tools.</p>
-            <div class="chips"><span class="chip">Excel</span><span class="chip">Tableau</span><span class="chip">ETL</span></div>
+        </article>
+
+        <article class="card">
+          <h3>🤖 AI / Machine Learning — What I Build</h3>
+          <p>Production-minded ML pipelines with strong evaluation, interpretability, and real-world impact.</p>
+          <ul style="margin:10px 0 0; padding-left:18px">
+            <li>Feature engineering + model training (baseline → improved)</li>
+            <li>Evaluate with the right metrics; avoid leakage & overfitting</li>
+            <li>Deliver interpretable outputs & monitor performance</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">scikit-learn</span><span class="chip">Model Evaluation</span>
+            <span class="chip">NLP</span><span class="chip">Time Series</span><span class="chip">Explainability</span>
           </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <h3>Bachelor's in Data Science</h3>
-            <p class="timeline-date">2016 - 2020</p>
-            <p>Graduated with honors, focusing on statistics, machine learning, and data visualization.</p>
-            <div class="chips"><span class="chip">Statistics</span><span class="chip">ML</span><span class="chip">Python</span></div>
+        </article>
+
+        <article class="card">
+          <h3>💻 Software Engineering — What I Ship</h3>
+          <p>Reliable, maintainable systems and automation that power scalable data products.</p>
+          <ul style="margin:10px 0 0; padding-left:18px">
+            <li>Build scripts & services to automate repeatable work</li>
+            <li>Create APIs / small apps to serve analytics</li>
+            <li>Use testing + Git workflows for quality</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">APIs</span><span class="chip">Git/GitHub</span><span class="chip">Unit Testing</span>
+            <span class="chip">CI/CD Basics</span><span class="chip">Linux</span><span class="chip">Automation</span>
           </div>
-        </div>
+        </article>
+
+        <article class="card">
+          <h3>🧱 Data Engineering Foundations</h3>
+          <p>Make data consistent, scalable, and ready for analytics & AI.</p>
+          <div class="chips">
+            <span class="chip">ETL/ELT</span><span class="chip">Data Quality</span><span class="chip">Pipelines</span>
+            <span class="chip">Normalization</span><span class="chip">Scheduling</span><span class="chip">Documentation</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>🛠️ Analytics Toolkit</h3>
+          <p>Tools I use to build dashboards, automate analysis, and collaborate.</p>
+          <div class="chips">
+            <span class="chip">SQL</span><span class="chip">Pandas</span><span class="chip">Jupyter</span>
+            <span class="chip">Excel</span><span class="chip">Power BI</span><span class="chip">Tableau</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>☁️ Cloud (Basics)</h3>
+          <p>Comfortable with core cloud concepts and shipping small projects.</p>
+          <div class="chips">
+            <span class="chip">AWS</span><span class="chip">S3</span><span class="chip">IAM</span>
+            <span class="chip">Deployment Basics</span><span class="chip">Security Mindset</span><span class="chip">Monitoring</span>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -389,6 +510,87 @@ def clean(df):
     </section>
 
     <footer>© <span id="year"></span> Nhat Nguyen</footer>
+    </div>
+
+    <section class="section dark-page" id="darkAchievements" style="display:none">
+      <h2>Level Up: My Data Journey</h2>
+      <p class="sub" style="margin-top:6px">A quick “skill map” of what I’ve built, shipped, and earned—so you can scan my strengths in seconds.</p>
+
+      <div class="journey">
+        <div class="ring-beams" aria-hidden="true"></div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="step-head"><div class="step-num">1</div><h3>🎓 Learn</h3></div>
+            <div class="flow">
+              <span class="node">📚 Coursework</span><span class="arrow">→</span>
+              <span class="node">📝 Assignments</span><span class="arrow">→</span>
+              <span class="node">🧠 Concepts</span>
+            </div>
+            <div class="micro">Foundation: systems, statistics, data structures.</div>
+          </article>
+
+          <article class="step">
+            <div class="step-head"><div class="step-num">2</div><h3>🧪 Practice</h3></div>
+            <div class="flow">
+              <span class="node">🗃️ SQL</span><span class="arrow">→</span>
+              <span class="node">🐍 Python</span><span class="arrow">→</span>
+              <span class="node">📊 BI</span>
+            </div>
+            <div class="micro">Repeatable drills: queries, EDA, dashboards.</div>
+          </article>
+
+          <article class="step">
+            <div class="step-head"><div class="step-num">3</div><h3>📊 Build</h3></div>
+            <div class="flow">
+              <span class="node">📥 Data</span><span class="arrow">→</span>
+              <span class="node">🧩 Model</span><span class="arrow">→</span>
+              <span class="node">📈 Dashboard</span>
+            </div>
+            <div class="micro">KPI frameworks + drill-down storytelling.</div>
+          </article>
+
+          <article class="step">
+            <div class="step-head"><div class="step-num">4</div><h3>🧱 Automate</h3></div>
+            <div class="flow">
+              <span class="node">🧼 Clean</span><span class="arrow">→</span>
+              <span class="node">🔁 Schedule</span><span class="arrow">→</span>
+              <span class="node">✅ Reliable</span>
+            </div>
+            <div class="micro">Less manual work; more consistent reporting.</div>
+          </article>
+
+          <article class="step">
+            <div class="step-head"><div class="step-num">5</div><h3>🤝 Work With Teams</h3></div>
+            <div class="flow">
+              <span class="node">🎯 Questions</span><span class="arrow">→</span>
+              <span class="node">🔎 Insights</span><span class="arrow">→</span>
+              <span class="node">⚡ Decisions</span>
+            </div>
+            <div class="micro">Stakeholders → clarity → action.</div>
+          </article>
+
+          <article class="step">
+            <div class="step-head"><div class="step-num">6</div><h3>🤖 Level Up (AI/ML)</h3></div>
+            <div class="flow">
+              <span class="node">🧬 Features</span><span class="arrow">→</span>
+              <span class="node">🧠 Train</span><span class="arrow">→</span>
+              <span class="node">📏 Evaluate</span>
+            </div>
+            <div class="micro">Practical ML with metrics + explainability.</div>
+          </article>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <h3 style="margin:0 0 10px">Next Unlocks</h3>
+        <ul style="margin:0; padding-left:18px">
+          <li>Publish 2 more case studies with measurable business impact.</li>
+          <li>Build an ML project with monitoring + model cards.</li>
+          <li>Ship a small analytics API (Python) with tests.</li>
+        </ul>
+      </div>
+    </section>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -508,6 +710,38 @@ def clean(df):
       });
     }
 
+    function initAimlSkillsChart(){
+      const ctx=document.getElementById('aimlSkillsChart');
+      new Chart(ctx,{type:'radar',
+        data:{
+          labels:['Python', 'Machine Learning', 'Data Analysis', 'SQL', 'Tableau', 'Power BI', 'ETL', 'Statistics'],
+          datasets:[{
+            label:'Proficiency Level',
+            data:[90, 85, 95, 92, 95, 88, 80, 87],
+            backgroundColor:'rgba(0,255,136,0.2)',
+            borderColor:'#00ff88',
+            borderWidth:2,
+            pointBackgroundColor:'#00ff88',
+            pointBorderColor:'#fff',
+            pointHoverBackgroundColor:'#fff',
+            pointHoverBorderColor:'#00ff88'
+          }]
+        },
+        options:{
+          responsive:true,
+          maintainAspectRatio:false,
+          plugins:{legend:{display:false}},
+          scales:{
+            r:{
+              beginAtZero:true,
+              max:100,
+              ticks:{stepSize:20}
+            }
+          }
+        }
+      });
+    }
+
     const inited={e:false,air:false,cl:false};
     function maybeInit(){
       const h=location.hash;
@@ -544,6 +778,12 @@ def clean(df):
         root.style.setProperty('--glass1', 'rgba(255,255,255,.05)');
         root.style.setProperty('--glass2', 'rgba(255,255,255,.02)');
         themeToggle.textContent = '☀️ Light';
+        document.body.classList.add('dark-view');
+        const main=document.getElementById('pageMain');
+        const dark=document.getElementById('darkAchievements');
+        if(main) main.style.display='none';
+        if(dark) dark.style.display='block';
+        window.scrollTo({top:0, behavior:'smooth'});
       } else {
         root.style.setProperty('--bg', '#ffffff');
         root.style.setProperty('--bg2', '#f8f9fa');
@@ -553,8 +793,11 @@ def clean(df):
         root.style.setProperty('--glass1', 'rgba(0,0,0,.05)');
         root.style.setProperty('--glass2', 'rgba(0,0,0,.02)');
         themeToggle.textContent = '🌙 Dark';
+        document.body.classList.remove('dark-view');
+        const main=document.getElementById('pageMain');
+        const dark=document.getElementById('darkAchievements');
+        if(dark) dark.style.display='none';
+        if(main) main.style.display='block';
       }
     });
   </script>
-</body>
-</html>
